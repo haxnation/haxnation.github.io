@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haxnation Mumbai - Local Chapter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .hover-lift {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-2px);
+        }
+
+        .blur-bg {
+            backdrop-filter: blur(20px);
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .mobile-menu {
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu.hidden {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        .mobile-menu:not(.hidden) {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .event-card {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .event-card.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .loading-shimmer {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        .linkedin-hover {
+            transition: all 0.3s ease;
+        }
+
+        .linkedin-hover:hover {
+            transform: scale(1.1);
+            color: #0077b5;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-900 smooth-scroll">
+    <!-- Navigation -->
+    <nav class="sticky top-0 left-0 right-0 z-50 bg-white/95 blur-bg border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <img src="images/mumbai_logo.png" alt="Haxnation Mumbai Logo" class="h-8 w-auto">
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#collab-events" class="text-gray-600 hover:text-cyan-600 transition-colors">Collab
+                        Events</a>
+                    <a href="#monthly-events" class="text-gray-600 hover:text-cyan-600 transition-colors">Monthly
+                        Events</a>
+                    <a href="#team" class="text-gray-600 hover:text-cyan-600 transition-colors">Team</a>
+                    <a href="#contact"
+                        class="bg-cyan-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-gray-600 hover:text-cyan-600 focus:outline-none mobile-menu-toggle">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu hidden md:hidden bg-white/95 blur-bg border-b border-gray-100">
+            <div class="px-4 pt-2 pb-3 space-y-1">
+                <a href="#collab-events"
+                    class="block px-3 py-2 text-gray-600 hover:text-cyan-600 transition-colors">Collab Events</a>
+                <a href="#monthly-events"
+                    class="block px-3 py-2 text-gray-600 hover:text-cyan-600 transition-colors">Monthly Events</a>
+                <a href="#team" class="block px-3 py-2 text-gray-600 hover:text-cyan-600 transition-colors">Team</a>
+                <a href="#contact"
+                    class="block mx-3 my-2 bg-cyan-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors text-center">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-cyan-50 to-blue-50 min-h-screen flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="text-center">
+                <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                    Haxnation <span class="text-cyan-600">Mumbai</span>
+                </h1>
+                <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                    Building the strongest cybersecurity community in Mumbai through hands-on learning, collaborative
+                    events, and continuous skill development.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#monthly-events"
+                        class="bg-cyan-600 text-white px-8 py-3 rounded-lg hover:bg-indigo-700 transition-colors font-medium">
+                        View Events
+                    </a>
+                    <a href="#team"
+                        class="border border-gray-300 text-gray-700 px-8 py-3 rounded-lg hover:bg-gray-50 transition-colors font-medium">
+                        Meet The Team
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collaborative Events Section -->
+    <section id="collab-events" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Collaborative Events</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Major events and partnerships that shaped our community
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-lg hover-lift border border-gray-100">
+                    <div class="aspect-w-16 aspect-h-9 mb-4">
+                        <div class="w-full h-48 rounded-lg overflow-hidden relative">
+                            <img src="images/foss_event.png" alt="FOSS Mumbai 2025" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Mumbai FOSS 2025</h3>
+                    <p class="text-sm text-gray-500 mb-3">April 2025</p>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Partnered with FOSS United and Breachforce to host a cybersecurity stall at Mumbai FOSS 2025,
+                        featuring a live CTF and storyline-based challenges, engaging 50+ students and professionals.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-orange-100 text-orange-800 text-xs rounded-full">50+ Students</span>
+                        <span class="px-3 py-1 bg-red-100 text-red-800 text-xs rounded-full">CTF Design</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Partnership</span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-lg hover-lift border border-gray-100">
+                    <div class="aspect-w-16 aspect-h-9 mb-4">
+                        <div class="w-full h-48 rounded-lg overflow-hidden relative">
+                            <img src="images/techfest.png" alt="Techfest Mumbai 2024"
+                                class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">GDSC TechFest Mumbai 2024</h3>
+                    <p class="text-sm text-gray-500 mb-3">April 2024</p>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Co-hosted the Cybersecurity room with The Hacker's Meetup Mumbai Chapter, impacting 100+
+                        students with sessions on SOC, Offensive Security, Blockchain Security, and Critical
+                        Infrastructure.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-indigo-100 text-indigo-800 text-xs rounded-full">100+ Students</span>
+                        <span class="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full">4 Sessions</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Partnership</span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-lg hover-lift border border-gray-100">
+                    <div class="aspect-w-16 aspect-h-9 mb-4">
+                        <div class="w-full h-48 rounded-lg overflow-hidden relative">
+                            <img src="images/aurum.png" alt="Aurum Fest Cybersecurity"
+                                class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Aurum Fest Cybersecurity</h3>
+                    <p class="text-sm text-gray-500 mb-3">March 2024</p>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Provided guidance for CTF design and development, with speaker support for Understanding SOC and
+                        CTF Introductory sessions, impacting 50+ students.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-orange-100 text-orange-800 text-xs rounded-full">50+ Students</span>
+                        <span class="px-3 py-1 bg-red-100 text-red-800 text-xs rounded-full">CTF Design</span>
+                        <span class="px-3 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full">Speakers</span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-lg hover-lift border border-gray-100">
+                    <div class="aspect-w-16 aspect-h-9 mb-4">
+                        <div class="w-full h-48 rounded-lg overflow-hidden relative">
+                            <img src="images/devfest.png" alt="Aurum Fest Cybersecurity"
+                                class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">GDG DevFest Mumbai</h3>
+                    <p class="text-sm text-gray-500 mb-3">December 2023</p>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Developed CTF challenges for DevFest Mumbai participants under The Hackers Meetup Mumbai Chapter
+                        banner, with all challenges later uploaded to our open-source repository.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">DevFest</span>
+                        <span class="px-3 py-1 bg-pink-100 text-pink-800 text-xs rounded-full">Open Source</span>
+                        <span class="px-3 py-1 bg-indigo-100 text-indigo-800 text-xs rounded-full">CTF</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Monthly Events Section -->
+    <section id="monthly-events" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Monthly Events</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-6">
+                    Regular community meetups, workshops, and learning sessions
+                </p>
+                <a href="https://lu.ma/user/usr-HkDJKoqznvMGZuW" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center bg-cyan-600 text-white px-6 py-3 rounded-lg hover:bg-cyan-700 transition-colors font-medium">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                        </path>
+                    </svg>
+                    Book Events on Luma
+                </a>
+            </div>
+
+            <div id="events-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Events will be loaded here -->
+            </div>
+
+            <div class="text-center mt-12">
+                <button id="load-more-btn"
+                    class="bg-gray-600 text-white px-8 py-3 rounded-lg hover:bg-gray-700 transition-colors font-medium">
+                    Load More Events
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Meet Our Team</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    The passionate individuals driving Mumbai's cybersecurity community
+                </p>
+            </div>
+
+            <!-- Team Grid - 4 cards per row on large screens -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <!-- Team Member 1 -->
+                <div class="bg-gray-50 p-6 rounded-xl text-center hover-lift">
+                    <div class="w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <img src="images/ayushya.jpg" alt="Icon" class="w-full h-auto rounded-full" />
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-1">Ayushya Shah</h3>
+                    <p class="text-gray-600 text-sm mb-4">Founder</p>
+                    <a href="www.linkedin.com/in/ayushya-shah"
+                        class="inline-block text-gray-400 hover:text-cyan-600 linkedin-hover">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-xl text-center hover-lift">
+                    <div class="w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <img src="images/aniket.jpg" alt="Icon" class="w-full h-auto rounded-full" />
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-1">Aniket Chavan</h3>
+                    <p class="text-gray-600 text-sm mb-4">Advisor</p>
+                    <a href="https://www.linkedin.com/in/ianiketchavan/"
+                        class="inline-block text-gray-400 hover:text-cyan-600 linkedin-hover">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-xl text-center hover-lift">
+                    <div class="w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <img src="images/jayesh.jpg" alt="Icon" class="w-full h-auto rounded-full" />
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-1">Jayesh Dhuri</h3>
+                    <p class="text-gray-600 text-sm mb-4">Chapter Lead</p>
+                    <a href="https://www.linkedin.com/in/jayeshdhuri/"
+                        class="inline-block text-gray-400 hover:text-cyan-600 linkedin-hover">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-xl text-center hover-lift">
+                    <div class="w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <img src="images/omkar.jpg" alt="Icon" class="w-full h-auto rounded-full" />
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-1">Omkar Gorde</h3>
+                    <p class="text-gray-600 text-sm mb-4">Chapter Co-Lead</p>
+                    <a href="https://www.linkedin.com/in/omkargorde/"
+                        class="inline-block text-gray-400 hover:text-cyan-600 linkedin-hover">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-xl text-center hover-lift">
+                    <div class="w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <img src="images/isha.jpg" alt="Icon" class="w-full h-auto rounded-full" />
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-1">Isha Kotecha</h3>
+                    <p class="text-gray-600 text-sm mb-4">Core Member</p>
+                    <a href="https://www.linkedin.com/in/ishakotecha404/"
+                        class="inline-block text-gray-400 hover:text-cyan-600 linkedin-hover">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-xl text-center hover-lift">
+                    <div class="w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <img src="images/adithya.jpg" alt="Icon" class="w-full h-auto rounded-full" />
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-1">Adithya Venkat</h3>
+                    <p class="text-gray-600 text-sm mb-4">Core Member</p>
+                    <a href="https://www.linkedin.com/in/adithya-venkat/"
+                        class="inline-block text-gray-400 hover:text-cyan-600 linkedin-hover">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gradient-to-br from-cyan-50 to-blue-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Get In Touch</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Ready to join Mumbai's strongest cybersecurity community? Reach out to us!
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+                <!-- Contact Form -->
+                <div class="bg-white p-8 rounded-xl shadow-lg contact-form">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-1">Send us a message</h3>
+                    <h3 class="text-sm font-semibold text-gray-600 mb-6">We are always in the lookout for partners and sponsors!</h3>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                            <input type="text" id="name" name="name" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-colors">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                            <input type="email" id="email" name="email" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-colors">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                            <input type="text" id="subject" name="subject" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-colors">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                            <textarea id="message" name="message" rows="4" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-colors resize-none"></textarea>
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-cyan-600 text-white py-3 px-6 rounded-lg hover:bg-cyan-700 transition-colors font-medium">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-6">Connect with us</h3>
+                        <div class="space-y-4">
+
+                            <!-- Email -->
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-cyan-100 rounded-lg flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-cyan-600" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-gray-900 font-medium">Email</p>
+                                    <p class="text-gray-600">haxnation.mumbai@gmail.com</p>
+                                </div>
+                            </div>
+
+                            <!-- WhatsApp Group -->
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-cyan-100 rounded-lg flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-cyan-600" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M20.52 3.48A12.23 12.23 0 0012 0C5.38 0 0 5.38 0 12c0 2.11.55 4.13 1.61 5.94L0 24l6.19-1.6A11.91 11.91 0 0012 24c6.62 0 12-5.38 12-12 0-3.21-1.25-6.23-3.48-8.52zM12 22c-1.75 0-3.47-.45-4.98-1.31l-.36-.2-3.68.95.98-3.58-.23-.37A9.94 9.94 0 012 12C2 6.48 6.48 2 12 2s10 4.48 10 10-4.48 10-10 10zm5.13-7.87c-.28-.14-1.63-.8-1.88-.89-.25-.09-.43-.14-.61.14s-.7.89-.86 1.07c-.16.18-.32.2-.6.07-.28-.14-1.2-.44-2.29-1.41-.85-.76-1.43-1.69-1.6-1.97-.17-.28-.02-.43.13-.57.13-.13.28-.34.42-.51.14-.17.18-.28.28-.47.09-.19.04-.36-.02-.5s-.61-1.47-.83-2.01c-.22-.52-.44-.45-.61-.45h-.52c-.18 0-.47.07-.71.34-.24.28-.93.91-.93 2.23s.96 2.59 1.09 2.77c.14.18 1.88 2.86 4.56 4.01.64.27 1.14.43 1.53.55.64.2 1.23.17 1.7.1.52-.08 1.63-.66 1.86-1.3.23-.63.23-1.17.16-1.29-.06-.12-.25-.2-.52-.33z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-gray-900 font-medium">WhatsApp Groups</p>
+                                    <a href="https://haxnation.org/mumbai/" target="_blank"
+                                        class="text-cyan-600 hover:text-cyan-700">Join Groups</a>
+                                </div>
+                            </div>
+
+                            <!-- Speaker Request -->
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-cyan-100 rounded-lg flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-cyan-600" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 6v6l4 2m6 4H6a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v12a2 2 0 01-2 2z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-gray-900 font-medium">Speaker Request</p>
+                                    <a href="https://forms.gle/UocQfDaNNMb8LLo1A" target="_blank"
+                                        class="text-cyan-600 hover:text-cyan-700">Request to Speak</a>
+                                </div>
+                            </div>
+
+                            <!-- Volunteer Request -->
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-cyan-100 rounded-lg flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-cyan-600" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M8 16l-2 2m0 0l-2-2m2 2V9m8 7l2 2m0 0l2-2m-2 2V9M12 4v16" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-gray-900 font-medium">Volunteer Request</p>
+                                    <a href="https://volunteer.haxnation.org/" target="_blank"
+                                        class="text-cyan-600 hover:text-cyan-700">Join as Volunteer</a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-900 mb-4">Follow us on social media</h4>
+                        <div class="flex space-x-4">
+                            <a href="https://www.linkedin.com/showcase/haxnation-meetups-mumbai/"
+                                class="w-12 h-12 bg-white rounded-lg shadow-md flex items-center justify-center hover:bg-gray-50 transition-colors">
+                                <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                </svg>
+                            </a>
+                            <a href="https://www.instagram.com/haxnation.mumbai"
+                                class="w-12 h-12 bg-white rounded-lg shadow-md flex items-center justify-center hover:bg-gray-50 transition-colors">
+                                <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <h3 class="text-2xl font-bold mb-4">Haxnation <span class="text-cyan-400">Mumbai</span></h3>
+                    <p class="text-gray-400 mb-4">
+                        Building the strongest cybersecurity community in Mumbai through hands-on learning,
+                        collaborative events, and continuous skill development.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/showcase/haxnation-meetups-mumbai/"
+                            class="text-gray-400 hover:text-cyan-400 transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/haxnation.mumbai"
+                            class="text-gray-400 hover:text-cyan-400 transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#collab-events" class="text-gray-400 hover:text-cyan-400 transition-colors">Collab
+                                Events</a></li>
+                        <li><a href="#monthly-events"
+                                class="text-gray-400 hover:text-cyan-400 transition-colors">Monthly Events</a></li>
+                        <li><a href="#team" class="text-gray-400 hover:text-cyan-400 transition-colors">Team</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-cyan-400 transition-colors">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Events</h4>
+                    <ul class="space-y-2">
+                        <li><a href="https://lu.ma/user/usr-HkDJKoqznvMGZuW" target="_blank"
+                                class="text-gray-400 hover:text-cyan-400 transition-colors">Book on Luma</a></li>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">
+                    © 2025 Haxnation. All rights reserved. Built with ❤️ for the cybersecurity community.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sample events data
+        const monthlyEvents = [
+            {
+                title: "July Monthly Meetup",
+                date: "19 July 2025",
+                time: "10:30 AM - 2:30 PM",
+                location: "TalaKunchi Networks Pvt Ltd, Andheri, Mumbai",
+                description: "Two sessions from building custom malware and IoT intrusion tools to stopping stealthy threats with Zero Trust and automation—experience a full-spectrum offensive-to-defensive security deep dive.",
+                image: "july-2025.jpg",
+                tags: ["Zero Trust", "Talakunchi", "Speakers"]
+            },
+            {
+                title: "Azure & Microsoft Security!",
+                date: "28 June 2025",
+                time: "11:00 AM - 1:00 PM",
+                location: "Microsoft Office, BKC, Mumbai",
+                description: "Two sessions on Azure offensive security covering privilege escalation, OIDC abuse, and conditional access policy bypass techniques with live demos and networking opportunities.",
+                image: "june-2025.jpg",
+                tags: ["Azure", "Microsoft", "Hands-on"]
+            },
+            {
+                title: "Cyber Laws, Risk & Compliance Demystified!",
+                date: "19 April 2025",
+                time: "10:30 AM - 2:30 PM",
+                location: "Lets Upgrade, ITM Andheri, Mumbai",
+                description: "Two sessions on digital privacy and healthcare security covering DPDP Act compliance, cyber medicine challenges, and data protection regulations with expert insights and networking opportunities.",
+                image: "april-2025.jpg",
+                tags: ["Compliance", "Lets Upgrade", "Speakers"]
+            },
+            {
+                title: "Professionals Only Networking Meetup",
+                date: "15 March 2025",
+                time: "4:00 PM - 8:00 PM",
+                location: "RUDRA Cybersecurity, BKC, Mumbai",
+                description: "A no-agenda, professionals-only gathering focused on meaningful conversations, knowledge sharing, and industry connections.",
+                image: "march-2025.jpg",
+                tags: ["Professionals", "RUDRA Cybersecurity", "Networking"]
+            },
+            {
+                title: "January Monthly Meetup",
+                date: "18 January 2025",
+                time: "10:30 AM - 2:30 PM",
+                location: "DevX, Andheri, Mumbai",
+                description: "Two sessions on advanced threat detection covering resilient threat hunting frameworks, malware analysis techniques, and polymorphic malware deconstruction with hands-on demonstrations and networking opportunities.",
+                image: "january-2025.jpg",
+                tags: ["Threat Detection ", "DevX", "Hands-on"]
+            },
+            {
+                title: "November Monthly Meetup",
+                date: "09 November 2024",
+                time: "10:30 AM - 2:30 PM",
+                location: "DevX, Andheri, Mumbai",
+                description: "Two sessions covering Cloud Infrastructure Entitlement Management with AWS IAM best practices and real-world bug bounty vulnerability escalation techniques including XSS wallet takeovers and unauthorized payment exploits.",
+                image: "november-2024.jpg",
+                tags: ["Cloud Security", "Bug Bounty", "DevX", "Hands-on"]
+            }]
+        let currentIndex = 0;
+        const batchSize = 3;
+        const container = document.getElementById('events-container');
+        const loadMoreBtn = document.getElementById('load-more-btn');
+
+        function createEventCard(event) {
+            const card = document.createElement('div');
+            card.className = `bg-white p-6 rounded-xl shadow-lg hover-lift border border-gray-100 event-card`;
+            card.innerHTML = `
+        <div class="flex gap-4 mb-4">
+            <div class="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
+                <img src="images/${event.image}" alt="${event.image}" class="w-full h-full object-cover">
+            </div>
+            <div class="flex-1">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">${event.title}</h3>
+                
+            </div>
+        </div>
+        <p class="text-sm text-gray-500 mb-1">${event.date} | ${event.time}</p>
+                <p class="text-sm text-gray-500 mb-3">${event.location}</p>
+        <p class="text-gray-600 text-sm mb-4 mt-4">${event.description}</p>
+        <div class="flex flex-wrap gap-2">
+            ${event.tags.map(tag => `<span class="px-3 py-1 bg-cyan-100 text-cyan-800 text-xs rounded-full">${tag}</span>`).join('')}
+        </div>
+    `;
+            return card;
+        }
+
+        function loadNextBatch() {
+            const nextBatch = monthlyEvents.slice(currentIndex, currentIndex + batchSize);
+            nextBatch.forEach(event => {
+                const card = createEventCard(event);
+                container.appendChild(card);
+                // Delay for animation effect
+                requestAnimationFrame(() => {
+                    card.classList.add('show');
+                });
+            });
+            currentIndex += batchSize;
+            if (currentIndex >= monthlyEvents.length) {
+                loadMoreBtn.style.display = 'none';
+            }
+        }
+
+        // Initial load
+        loadNextBatch();
+
+        // Button click
+        loadMoreBtn.addEventListener('click', loadNextBatch);
+        
+        // 3. Contact Form Handling
+        // Merged Contact Form Handling - Best of Both Approaches
+        document.addEventListener('DOMContentLoaded', function () {
+            const contactForm = document.querySelector('#contact form') || document.getElementById('contactForm');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    // Get form data using IDs (more reliable than placeholders)
+                    const name = document.getElementById("name").value.trim();
+                    const email = document.getElementById("email").value.trim();
+                    const subject = document.getElementById("subject").value.trim();
+                    const message = document.getElementById("message").value.trim();
+
+                    // Validate all fields are filled
+                    if (!name || !email || !subject || !message) {
+                        alert('Please fill in all fields');
+                        return;
+                    }
+
+                    // Email validation with improved regex
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) {
+                        alert('Please enter a valid email address');
+                        return;
+                    }
+
+                    // Get submit button and show loading state
+                    const submitButton = this.querySelector('button[type="submit"]') || this.querySelector('input[type="submit"]');
+                    const originalText = submitButton.textContent || submitButton.value;
+
+                    // Update button to show loading state
+                    if (submitButton.textContent !== undefined) {
+                        submitButton.textContent = 'Sending...';
+                    } else {
+                        submitButton.value = 'Sending...';
+                    }
+                    submitButton.disabled = true;
+
+                    // Create FormData for submission
+                    const formData = new FormData(this);
+
+                    // Submit to actual PHP endpoint
+                    fetch('../form.php', {
+                        method: 'POST',
+                        body: formData,
+                    })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return response.text();
+                        })
+                        .then(data => {
+                            // Show success message
+                            alert(data || 'Thank you for your message! We\'ll get back to you soon.');
+
+                            // Clear form fields
+                            document.getElementById("name").value = '';
+                            document.getElementById("email").value = '';
+                            document.getElementById("subject").value = '';
+                            document.getElementById("message").value = '';
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            alert('Error sending message. Please try again later.');
+                        })
+                        .finally(() => {
+                            // Reset button state
+                            if (submitButton.textContent !== undefined) {
+                                submitButton.textContent = originalText;
+                            } else {
+                                submitButton.value = originalText;
+                            }
+                            submitButton.disabled = false;
+                        });
+                });
+            }
+        });
+
+        // Fallback function for older browsers or alternative implementation
+        function validateAndSubmitForm(event) {
+            event.preventDefault();
+
+            // Get form reference
+            const form = event.target;
+
+            // Validation
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const subject = document.getElementById("subject").value.trim();
+            const message = document.getElementById("message").value.trim();
+
+            if (!name || !email || !subject || !message) {
+                alert("All fields are required.");
+                return false;
+            }
+
+            // Email validation
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            // Submit form
+            const formData = new FormData(form);
+
+            fetch('https://mailer.haxnation.org/form.php', {
+                method: 'POST',
+                body: formData,
+            })
+                .then(response => response.text())
+                .then(data => {
+                    alert(data);
+                    form.reset();
+                })
+                .catch(error => {
+                    alert("Error: " + error);
+                });
+
+            return false;
+        }
+    </script>
+</body>
+
+</html>
