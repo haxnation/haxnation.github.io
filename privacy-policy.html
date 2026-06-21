@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Haxnation - Privacy Policy</title>
-    
+    <title>Privacy Policy - Haxnation</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="images/favicon.ico" title="Favicon"/>
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -18,7 +18,8 @@
                 extend: {
                     colors: {
                         canvas: '#fafafa', ink: '#0b0b0b', card: '#ffffff',
-                        cyan: '#5ce1e6'
+                        cyan: '#5ce1e6', danger: '#ff2a2a',
+                        success: '#00e676', warning: '#ffeb3b'
                     },
                     fontFamily: {
                         sans: ['"Inter"', 'sans-serif'],
@@ -33,6 +34,24 @@
             .btn-primary {
                 @apply font-mono uppercase tracking-widest font-bold bg-cyan text-ink border-2 border-ink px-6 py-3 shadow-[4px_4px_0_0_#0b0b0b] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0_0_#0b0b0b] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all duration-75 focus:outline-none focus:ring-2 focus:ring-cyan focus:ring-offset-2;
             }
+            .btn-secondary {
+                @apply font-mono text-xs font-bold uppercase tracking-widest bg-white text-ink border-2 border-ink px-4 py-2 hover:bg-ink hover:text-white transition-colors duration-0 shadow-[2px_2px_0_0_#0b0b0b] focus:outline-none focus:ring-2 focus:ring-ink focus:ring-offset-2;
+            }
+            .card {
+                @apply bg-white border-2 border-ink p-6 sm:p-8 shadow-[6px_6px_0_0_#0b0b0b] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0_0_#0b0b0b] transition-all duration-75;
+            }
+            .sec-num {
+                @apply font-mono text-sm font-black bg-cyan border-2 border-ink w-10 h-10 flex items-center justify-center shrink-0 shadow-[2px_2px_0_0_#0b0b0b];
+            }
+            .sub-head {
+                @apply font-mono text-sm font-black uppercase tracking-widest text-ink border-b-2 border-ink inline-block pb-1 mt-6 mb-3;
+            }
+            .li-ok {
+                @apply flex items-start gap-2;
+            }
+        }
+        .smooth-scroll {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
@@ -45,96 +64,300 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <a href="/" class="flex items-center bg-ink border-2 border-ink px-3 py-1 shadow-[2px_2px_0_0_#0b0b0b] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0_0_#0b0b0b] transition-all duration-75 block">
-                        <img src="images/logo_wt.png" onerror="this.src='images/logo.png'" alt="Haxnation Logo" class="h-6 w-auto block object-contain filter invert">
+                    <a href="index.html" class="flex items-center block">
+                        <img src="images/logo.png" alt="Haxnation Logo" class="h-6 w-auto block object-contain filter">
                     </a>
                 </div>
                 <div class="hidden md:flex items-center space-x-8 font-mono text-sm font-bold uppercase">
-                    <a href="/#offerings" class="text-ink hover:text-cyan border-b-4 border-transparent hover:border-cyan pb-1 transition-colors block">Offerings</a>
-                    <a href="/#about" class="text-ink hover:text-cyan border-b-4 border-transparent hover:border-cyan pb-1 transition-colors block">About</a>
-                    <a href="/#contact" class="btn-primary py-2 px-4 text-xs ml-4">Contact</a>
+                    <a href="index.html#offerings" class="text-ink hover:text-cyan border-b-4 border-transparent hover:border-cyan pb-1 transition-colors block">Offerings</a>
+                    <a href="index.html#about" class="text-ink hover:text-cyan border-b-4 border-transparent hover:border-cyan pb-1 transition-colors block">About</a>
+                    <a href="index.html#products" class="text-ink hover:text-cyan border-b-4 border-transparent hover:border-cyan pb-1 transition-colors block">Products</a>
+                    <a href="index.html#community" class="text-ink hover:text-cyan border-b-4 border-transparent hover:border-cyan pb-1 transition-colors block">Community</a>
+                    <a href="index.html#contact" class="btn-primary py-2 px-4 text-xs ml-4">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-ink hover:text-cyan focus:outline-none border-2 border-ink p-1 shadow-[2px_2px_0_0_#0b0b0b] bg-white" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Content Section -->
-    <section class="py-20 relative z-10 border-b-2 border-ink min-h-[70vh]">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-12">
-                <p class="font-mono text-xs font-bold uppercase tracking-widest text-ink mb-4 bg-cyan inline-block px-2 border-2 border-ink shadow-[2px_2px_0_0_#0b0b0b]">DOCUMENTATION</p>
-                <h1 class="text-5xl md:text-7xl font-black text-ink uppercase tracking-tighter leading-none mb-8 border-b-4 border-ink pb-4">
-                    Privacy Policy
-                    <span class="inline-block w-4 h-[0.8em] bg-cyan animate-pulse align-middle ml-2 border-2 border-ink"></span>
-                </h1>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden fixed z-40 bg-white border-b-2 border-ink w-full">
+        <div class="px-4 pt-2 pb-3 space-y-1 font-mono text-sm font-bold uppercase">
+            <a href="index.html#offerings" class="block px-3 py-2 text-ink hover:bg-ink hover:text-white transition-colors border-2 border-transparent hover:border-ink">Offerings</a>
+            <a href="index.html#about" class="block px-3 py-2 text-ink hover:bg-ink hover:text-white transition-colors border-2 border-transparent hover:border-ink">About</a>
+            <a href="index.html#products" class="block px-3 py-2 text-ink hover:bg-ink hover:text-white transition-colors border-2 border-transparent hover:border-ink">Products</a>
+            <a href="index.html#community" class="block px-3 py-2 text-ink hover:bg-ink hover:text-white transition-colors border-2 border-transparent hover:border-ink">Community</a>
+            <a href="index.html#contact" class="block mx-3 my-2 btn-primary text-center">Contact</a>
+        </div>
+    </div>
+
+    <!-- Page Header (Hero-style transparent bg) -->
+    <section class="relative z-10 border-b-2 border-ink">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <a href="index.html" class="font-mono text-xs font-bold uppercase tracking-widest text-ink hover:text-cyan inline-flex items-center gap-2 mb-8">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                Back to Home
+            </a>
+            <h1 class="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none mb-6">
+                Privacy<br/><span class="text-white bg-ink px-4 inline-block mt-2">Policy</span>
+            </h1>
+            <p class="font-mono text-sm text-ink bg-white border-2 border-ink inline-block px-4 py-2 shadow-[4px_4px_0_0_#0b0b0b]">
+                Last Updated: June 2026
+            </p>
+        </div>
+    </section>
+
+    <!-- Policy Content -->
+    <section class="relative z-10 bg-canvas py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+
+            <p class="font-mono text-sm text-ink bg-cyan border-2 border-ink p-4 shadow-[4px_4px_0_0_#0b0b0b]">
+                This Privacy Policy describes how Haxnation collects, uses, and protects your personal information when you use our Site, products, and services.
+            </p>
+
+            <!-- 1 -->
+            <div class="card">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="sec-num">01</span>
+                    <h2 class="text-2xl font-black uppercase tracking-tight pt-1">Information Collection and Use</h2>
+                </div>
+                <p class="text-ink mb-4">
+                    While using our Site or engaging with our services, we may ask you to provide us with certain personal information that can be used to contact or identify you. Such information includes, but is not limited to:
+                </p>
+                <ul class="space-y-2 font-mono text-sm">
+                    <li class="li-ok"><span class="text-cyan font-bold">&gt;</span> Name and contact information (email address and/or phone number)</li>
+                    <li class="li-ok"><span class="text-cyan font-bold">&gt;</span> Organization or institution details</li>
+                    <li class="li-ok"><span class="text-cyan font-bold">&gt;</span> Account credentials based on the account created with respect to our organisation</li>
+                    <li class="li-ok"><span class="text-cyan font-bold">&gt;</span> Payment and billing information</li>
+                    <li class="li-ok"><span class="text-cyan font-bold">&gt;</span> Professional information including but not limited to, resume, skills, experience</li>
+                    <li class="li-ok"><span class="text-cyan font-bold">&gt;</span> Service-specific data</li>
+                    <li class="li-ok"><span class="text-cyan font-bold">&gt;</span> Communication records including but not limited to inquiries, support tickets and feedback</li>
+                </ul>
             </div>
-            
-            <div class="prose max-w-none">
-                <h2 class="text-2xl font-black text-ink uppercase mt-8 mb-4 tracking-tight border-b-2 border-ink pb-2">1. Information Collection and Use</h2>
-<p class="text-ink font-mono text-sm mb-4 leading-relaxed bg-white border-2 border-ink p-4 shadow-[2px_2px_0_0_#0b0b0b]">While using our Site or engaging with our services, we may ask you to provide us with certain personal information that can be used to contact or identify you. Such information includes, but is not limited to:</p>
-<p class="text-ink font-mono text-sm mb-4 leading-relaxed bg-white border-2 border-ink p-4 shadow-[2px_2px_0_0_#0b0b0b]">Name and contact information (email address and/or phone number)</p>
-<h2 class="text-2xl font-black text-ink uppercase mt-8 mb-4 tracking-tight border-b-2 border-ink pb-2">Organization or institution details</h2>
-<p class="text-ink font-mono text-sm mb-4 leading-relaxed bg-white border-2 border-ink p-4 shadow-[2px_2px_0_0_#0b0b0b]">Account credentials based on the account created with respect to our organisation</p>
-<h2 class="text-2xl font-black text-ink uppercase mt-8 mb-4 tracking-tight border-b-2 border-ink pb-2">Payment and billing information</h2>
-<p class="text-ink font-mono text-sm mb-4 leading-relaxed bg-white border-2 border-ink p-4 shadow-[2px_2px_0_0_#0b0b0b]">Professional information including but not limited to, resume, skills, experience</p>
-<h2 class="text-2xl font-black text-ink uppercase mt-8 mb-4 tracking-tight border-b-2 border-ink pb-2">Service-specific data</h2>
-<p class="text-ink font-mono text-sm mb-4 leading-relaxed bg-white border-2 border-ink p-4 shadow-[2px_2px_0_0_#0b0b0b]">Communication records including but not limited to inquiries, support tickets and feedback</p>
-<h2 class="text-2xl font-black text-ink uppercase mt-8 mb-4 tracking-tight border-b-2 border-ink pb-2">2. Purpose of Data Collection</h2>
-<p class="text-ink font-mono text-sm mb-4 leading-relaxed bg-white border-2 border-ink p-4 shadow-[2px_2px_0_0_#0b0b0b]">We collect and use information for the purposes listed below:</p>
-<p class="text-ink font-mono text-sm mb-4 leading-relaxed bg-white border-2 border-ink p-4 shadow-[2px_2px_0_0_#0b0b0b]">To deliver our cybersecurity education and training services</p>
-<p class="text-ink font-mono text-sm mb-4 leading-relaxed bg-white border-2 border-ink p-4 shadow-[2px_2px_0_0_#0b0b0b]">To provide custom CTF challenge development and educational CTF experiences</p>
-<p class="text-ink font-mono text-sm mb-4 leading-relaxed bg-white border-2 border-ink p-4 shadow-[2px_2px_0_0_#0b0b0b]">To offer curriculum design and consulting services</p>
-<h2 class="text-2xl font-black text-ink uppercase mt-8 mb-4 tracking-tight border-b-2 border-ink pb-2">To coordinate speakers, sessions, and events</h2>
-<p class="text-ink font-mono text-sm mb-4 leading-relaxed bg-white border-2 border-ink p-4 shadow-[2px_2px_0_0_#0b0b0b]">To operate our products (such as HaxRefs job referral platform and CTF Platform)</p>
-<h2 class="text-2xl font-black text-ink uppercase mt-8 mb-4 tracking-tight border-b-2 border-ink pb-2">To process payments and manage client accounts</h2>
-<p class="text-ink font-mono text-sm mb-4 leading-relaxed bg-white border-2 border-ink p-4 shadow-[2px_2px_0_0_#0b0b0b]">To communicate about services, events, and opportunities</p>
-<h2 class="text-2xl font-black text-ink uppercase mt-8 mb-4 tracking-tight border-b-2 border-ink pb-2">To improve our services and develop new offerings</h2>
-<h2 class="text-2xl font-black text-ink uppercase mt-8 mb-4 tracking-tight border-b-2 border-ink pb-2">To comply with legal and contractual obligations</h2>
-<h2 class="text-2xl font-black text-ink uppercase mt-8 mb-4 tracking-tight border-b-2 border-ink pb-2">To build and maintain our cybersecurity community</h2>
-<h2 class="text-2xl font-black text-ink uppercase mt-8 mb-4 tracking-tight border-b-2 border-ink pb-2">3. Log Data</h2>
-<p class="text-ink font-mono text-sm mb-4 leading-relaxed bg-white border-2 border-ink p-4 shadow-[2px_2px_0_0_#0b0b0b]">Like many site operators, we collect information that your browser sends whenever you visit our Site ("Log Data"). This Log Data may include information such as your computer's Internet Protocol ("IP") address, browser type, browser version, the pages of our Site that you visit, the time and date of your visit, the time spent on those pages, and other statistics.</p>
-<h2 class="text-2xl font-black text-ink uppercase mt-8 mb-4 tracking-tight border-b-2 border-ink pb-2">4. Cookies and Tracking Technologies</h2>
-<p class="text-ink font-mono text-sm mb-4 leading-relaxed bg-white border-2 border-ink p-4 shadow-[2px_2px_0_0_#0b0b0b]">We use cookies and similar tracking technologies to track activity on our Site and hold certain information. Cookies are files with small amounts of data, which may include an anonymous unique identifier. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Site.</p>
-<h2 class="text-2xl font-black text-ink uppercase mt-8 mb-4 tracking-tight border-b-2 border-ink pb-2">5. Data Storage and Security</h2>
-<p class="text-ink font-mono text-sm mb-4 leading-relaxed bg-white border-2 border-ink p-4 shadow-[2px_2px_0_0_#0b0b0b]">The security of your personal information is important to us. We implement reasonable security measures to protect data against all/any unauthorized access, alteration, disclosure, and/or destruction of your personal information. However, given that currently no method of transmission over the Internet or electronic storage is 100% secure, thus, we cannot guarantee absolute security.</p>
-<h2 class="text-2xl font-black text-ink uppercase mt-8 mb-4 tracking-tight border-b-2 border-ink pb-2">6. Data Sharing and Disclosure</h2>
-<p class="text-ink font-mono text-sm mb-4 leading-relaxed bg-white border-2 border-ink p-4 shadow-[2px_2px_0_0_#0b0b0b]">We do not sell, trade, and/or rent your personal information to third parties. We may share your information in the following circumstances:</p>
-<p class="text-ink font-mono text-sm mb-4 leading-relaxed bg-white border-2 border-ink p-4 shadow-[2px_2px_0_0_#0b0b0b]">Service Delivery: With client organizations (such as the universities, companies, competition organizers) when necessary to deliver contracted services</p>
-<p class="text-ink font-mono text-sm mb-4 leading-relaxed bg-white border-2 border-ink p-4 shadow-[2px_2px_0_0_#0b0b0b]">HaxRefs Platform: Job seeker profiles and referral information may be shared with potential employers and referrers with due consent of parties</p>
-<p class="text-ink font-mono text-sm mb-4 leading-relaxed bg-white border-2 border-ink p-4 shadow-[2px_2px_0_0_#0b0b0b]">Public Information: Event participation, community contributions, and CTF platform achievements may be publicly displayed</p>
-<p class="text-ink font-mono text-sm mb-4 leading-relaxed bg-white border-2 border-ink p-4 shadow-[2px_2px_0_0_#0b0b0b]">Service Providers: With third-party service providers including but not limited to, hosting, payment processing, email services and/or analytics, under strict confidentiality agreements</p>
-<p class="text-ink font-mono text-sm mb-4 leading-relaxed bg-white border-2 border-ink p-4 shadow-[2px_2px_0_0_#0b0b0b]">Business Partners: With event co-hosts and community partners (e.g., GDSC, GDG, The Hacker's Meetup) for collaborative events</p>
-<p class="text-ink font-mono text-sm mb-4 leading-relaxed bg-white border-2 border-ink p-4 shadow-[2px_2px_0_0_#0b0b0b]">Legal Requirements: If required by law or in response to requests by public authorities</p>
-<p class="text-ink font-mono text-sm mb-4 leading-relaxed bg-white border-2 border-ink p-4 shadow-[2px_2px_0_0_#0b0b0b]">Business Protection: To protect the rights, property, and/or safety of Haxnation, our clients, and/or others</p>
-<h2 class="text-2xl font-black text-ink uppercase mt-8 mb-4 tracking-tight border-b-2 border-ink pb-2">7. User Rights</h2>
-<p class="text-ink font-mono text-sm mb-4 leading-relaxed bg-white border-2 border-ink p-4 shadow-[2px_2px_0_0_#0b0b0b]">Depending on your jurisdiction, you may have the following rights regarding your personal data:</p>
-<h2 class="text-2xl font-black text-ink uppercase mt-8 mb-4 tracking-tight border-b-2 border-ink pb-2">Access to your personal information</h2>
-<h2 class="text-2xl font-black text-ink uppercase mt-8 mb-4 tracking-tight border-b-2 border-ink pb-2">Correction of inaccurate data</h2>
-<h2 class="text-2xl font-black text-ink uppercase mt-8 mb-4 tracking-tight border-b-2 border-ink pb-2">Deletion of your account and associated data</h2>
-<h2 class="text-2xl font-black text-ink uppercase mt-8 mb-4 tracking-tight border-b-2 border-ink pb-2">Data portability</h2>
-<h2 class="text-2xl font-black text-ink uppercase mt-8 mb-4 tracking-tight border-b-2 border-ink pb-2">Objection to certain data processing activities</h2>
-<p class="text-ink font-mono text-sm mb-4 leading-relaxed bg-white border-2 border-ink p-4 shadow-[2px_2px_0_0_#0b0b0b]">To exercise these rights, please contact us at the email address provided below.</p>
-<h2 class="text-2xl font-black text-ink uppercase mt-8 mb-4 tracking-tight border-b-2 border-ink pb-2">8. Data Retention</h2>
-<p class="text-ink font-mono text-sm mb-4 leading-relaxed bg-white border-2 border-ink p-4 shadow-[2px_2px_0_0_#0b0b0b]">We retain your personal information for as long as your account is active or as needed to provide you services. We may retain certain information after account deletion for legitimate purposes such as preventing abuse, maintaining historical leaderboard records, or complying with legal obligations.</p>
-<h2 class="text-2xl font-black text-ink uppercase mt-8 mb-4 tracking-tight border-b-2 border-ink pb-2">9. Children's Privacy</h2>
-<p class="text-ink font-mono text-sm mb-4 leading-relaxed bg-white border-2 border-ink p-4 shadow-[2px_2px_0_0_#0b0b0b]">Our Site is intended for users who are 13 years of age or older. We do not knowingly collect personal information from children under 13 years of age. If we become aware that we have collected personal information from a child under 13 years of age, we will take steps to delete such information.</p>
-<h2 class="text-2xl font-black text-ink uppercase mt-8 mb-4 tracking-tight border-b-2 border-ink pb-2">10. Third-Party Links</h2>
-<p class="text-ink font-mono text-sm mb-4 leading-relaxed bg-white border-2 border-ink p-4 shadow-[2px_2px_0_0_#0b0b0b]">Our Site may contain links to third-party websites. We are not responsible for the privacy practices of these external sites. We encourage you to review the privacy policies of any third-party sites you visit before proceeding with the services of such sites.</p>
-<h2 class="text-2xl font-black text-ink uppercase mt-8 mb-4 tracking-tight border-b-2 border-ink pb-2">11. International Data Transfers</h2>
-<p class="text-ink font-mono text-sm mb-4 leading-relaxed bg-white border-2 border-ink p-4 shadow-[2px_2px_0_0_#0b0b0b]">Your information may be transferred to and maintained on servers located outside of your state, province, country, or other governmental jurisdiction where data protection laws may differ. By using our Site, you consent to such transfers.</p>
-<h2 class="text-2xl font-black text-ink uppercase mt-8 mb-4 tracking-tight border-b-2 border-ink pb-2">12. Changes to This Privacy Policy</h2>
-<p class="text-ink font-mono text-sm mb-4 leading-relaxed bg-white border-2 border-ink p-4 shadow-[2px_2px_0_0_#0b0b0b]">We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date. You are advised to review this Privacy Policy periodically for any changes.</p>
-<h2 class="text-2xl font-black text-ink uppercase mt-8 mb-4 tracking-tight border-b-2 border-ink pb-2">13. Contact Us</h2>
-<p class="text-ink font-mono text-sm mb-4 leading-relaxed bg-white border-2 border-ink p-4 shadow-[2px_2px_0_0_#0b0b0b]">If you have any questions about this Privacy Policy, please contact us:</p>
-<h2 class="text-2xl font-black text-ink uppercase mt-8 mb-4 tracking-tight border-b-2 border-ink pb-2">By email: corphaxnation@gmail.com</h2>
-<p class="text-ink font-mono text-sm mb-4 leading-relaxed bg-white border-2 border-ink p-4 shadow-[2px_2px_0_0_#0b0b0b]">By visiting our Contact Us page: haxnation.org/contact</p>
+
+            <!-- 2 -->
+            <div class="card">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="sec-num">02</span>
+                    <h2 class="text-2xl font-black uppercase tracking-tight pt-1">Purpose of Data Collection</h2>
+                </div>
+                <p class="text-ink mb-4">We collect and use information for the purposes listed below:</p>
+                <ul class="space-y-2 font-mono text-sm">
+                    <li class="li-ok"><span class="text-cyan font-bold">&gt;</span> To deliver our cybersecurity education and training services</li>
+                    <li class="li-ok"><span class="text-cyan font-bold">&gt;</span> To provide custom CTF challenge development and educational CTF experiences</li>
+                    <li class="li-ok"><span class="text-cyan font-bold">&gt;</span> To offer curriculum design and consulting services</li>
+                    <li class="li-ok"><span class="text-cyan font-bold">&gt;</span> To coordinate speakers, sessions, and events</li>
+                    <li class="li-ok"><span class="text-cyan font-bold">&gt;</span> To operate our products (such as HaxRefs job referral platform and CTF Platform)</li>
+                    <li class="li-ok"><span class="text-cyan font-bold">&gt;</span> To process payments and manage client accounts</li>
+                    <li class="li-ok"><span class="text-cyan font-bold">&gt;</span> To communicate about services, events, and opportunities</li>
+                    <li class="li-ok"><span class="text-cyan font-bold">&gt;</span> To improve our services and develop new offerings</li>
+                    <li class="li-ok"><span class="text-cyan font-bold">&gt;</span> To comply with legal and contractual obligations</li>
+                    <li class="li-ok"><span class="text-cyan font-bold">&gt;</span> To build and maintain our cybersecurity community</li>
+                </ul>
             </div>
+
+            <!-- 3 -->
+            <div class="card">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="sec-num">03</span>
+                    <h2 class="text-2xl font-black uppercase tracking-tight pt-1">Log Data</h2>
+                </div>
+                <p class="text-ink">
+                    Like many site operators, we collect information that your browser sends whenever you visit our Site ("Log Data"). This Log Data may include information such as your computer's Internet Protocol ("IP") address, browser type, browser version, the pages of our Site that you visit, the time and date of your visit, the time spent on those pages, and other statistics.
+                </p>
+            </div>
+
+            <!-- 4 -->
+            <div class="card">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="sec-num">04</span>
+                    <h2 class="text-2xl font-black uppercase tracking-tight pt-1">Cookies and Tracking Technologies</h2>
+                </div>
+                <p class="text-ink">
+                    We use cookies and similar tracking technologies to track activity on our Site and hold certain information. Cookies are files with small amounts of data, which may include an anonymous unique identifier. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Site.
+                </p>
+            </div>
+
+            <!-- 5 -->
+            <div class="card">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="sec-num">05</span>
+                    <h2 class="text-2xl font-black uppercase tracking-tight pt-1">Data Storage and Security</h2>
+                </div>
+                <p class="text-ink">
+                    The security of your personal information is important to us. We implement reasonable security measures to protect data against all/any unauthorized access, alteration, disclosure, and/or destruction of your personal information. However, given that currently no method of transmission over the Internet or electronic storage is 100% secure, thus, we cannot guarantee absolute security.
+                </p>
+            </div>
+
+            <!-- 6 -->
+            <div class="card">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="sec-num">06</span>
+                    <h2 class="text-2xl font-black uppercase tracking-tight pt-1">Data Sharing and Disclosure</h2>
+                </div>
+                <p class="text-ink mb-4">
+                    We do not sell, trade, and/or rent your personal information to third parties. We may share your information in the following circumstances:
+                </p>
+                <ul class="space-y-3 font-mono text-sm">
+                    <li class="li-ok"><span class="text-cyan font-bold">&gt;</span> <span><strong>Service Delivery:</strong> With client organizations (such as the universities, companies, competition organizers) when necessary to deliver contracted services</span></li>
+                    <li class="li-ok"><span class="text-cyan font-bold">&gt;</span> <span><strong>HaxRefs Platform:</strong> Job seeker profiles and referral information may be shared with potential employers and referrers with due consent of parties</span></li>
+                    <li class="li-ok"><span class="text-cyan font-bold">&gt;</span> <span><strong>Public Information:</strong> Event participation, community contributions, and CTF platform achievements may be publicly displayed</span></li>
+                    <li class="li-ok"><span class="text-cyan font-bold">&gt;</span> <span><strong>Service Providers:</strong> With third-party service providers including but not limited to, hosting, payment processing, email services and/or analytics, under strict confidentiality agreements</span></li>
+                    <li class="li-ok"><span class="text-cyan font-bold">&gt;</span> <span><strong>Business Partners:</strong> With event co-hosts and community partners (e.g., GDSC, GDG, The Hacker's Meetup) for collaborative events</span></li>
+                    <li class="li-ok"><span class="text-cyan font-bold">&gt;</span> <span><strong>Legal Requirements:</strong> If required by law or in response to requests by public authorities</span></li>
+                    <li class="li-ok"><span class="text-cyan font-bold">&gt;</span> <span><strong>Business Protection:</strong> To protect the rights, property, and/or safety of Haxnation, our clients, and/or others</span></li>
+                </ul>
+            </div>
+
+            <!-- 7 -->
+            <div class="card">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="sec-num">07</span>
+                    <h2 class="text-2xl font-black uppercase tracking-tight pt-1">User Rights</h2>
+                </div>
+                <p class="text-ink mb-4">Depending on your jurisdiction, you may have the following rights regarding your personal data:</p>
+                <ul class="space-y-2 font-mono text-sm mb-4">
+                    <li class="li-ok"><span class="text-cyan font-bold">&gt;</span> Access to your personal information</li>
+                    <li class="li-ok"><span class="text-cyan font-bold">&gt;</span> Correction of inaccurate data</li>
+                    <li class="li-ok"><span class="text-cyan font-bold">&gt;</span> Deletion of your account and associated data</li>
+                    <li class="li-ok"><span class="text-cyan font-bold">&gt;</span> Data portability</li>
+                    <li class="li-ok"><span class="text-cyan font-bold">&gt;</span> Objection to certain data processing activities</li>
+                </ul>
+                <p class="text-ink">To exercise these rights, please contact us at the email address provided below.</p>
+            </div>
+
+            <!-- 8 -->
+            <div class="card">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="sec-num">08</span>
+                    <h2 class="text-2xl font-black uppercase tracking-tight pt-1">Data Retention</h2>
+                </div>
+                <p class="text-ink">
+                    We retain your personal information for as long as your account is active or as needed to provide you services. We may retain certain information after account deletion for legitimate purposes such as preventing abuse, maintaining historical leaderboard records, or complying with legal obligations.
+                </p>
+            </div>
+
+            <!-- 9 -->
+            <div class="card">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="sec-num">09</span>
+                    <h2 class="text-2xl font-black uppercase tracking-tight pt-1">Children's Privacy</h2>
+                </div>
+                <p class="text-ink">
+                    Our Site is intended for users who are 13 years of age or older. We do not knowingly collect personal information from children under 13 years of age. If we become aware that we have collected personal information from a child under 13 years of age, we will take steps to delete such information.
+                </p>
+            </div>
+
+            <!-- 10 -->
+            <div class="card">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="sec-num">10</span>
+                    <h2 class="text-2xl font-black uppercase tracking-tight pt-1">Third-Party Links</h2>
+                </div>
+                <p class="text-ink">
+                    Our Site may contain links to third-party websites. We are not responsible for the privacy practices of these external sites. We encourage you to review the privacy policies of any third-party sites you visit before proceeding with the services of such sites.
+                </p>
+            </div>
+
+            <!-- 11 -->
+            <div class="card">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="sec-num">11</span>
+                    <h2 class="text-2xl font-black uppercase tracking-tight pt-1">International Data Transfers</h2>
+                </div>
+                <p class="text-ink">
+                    Your information may be transferred to and maintained on servers located outside of your state, province, country, or other governmental jurisdiction where data protection laws may differ. By using our Site, you consent to such transfers.
+                </p>
+            </div>
+
+            <!-- 12 -->
+            <div class="card">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="sec-num">12</span>
+                    <h2 class="text-2xl font-black uppercase tracking-tight pt-1">Changes to This Privacy Policy</h2>
+                </div>
+                <p class="text-ink">
+                    We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date. You are advised to review this Privacy Policy periodically for any changes.
+                </p>
+            </div>
+
+            <!-- 13 -->
+            <div class="card bg-ink text-white">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="sec-num bg-cyan text-ink border-white">13</span>
+                    <h2 class="text-2xl font-black uppercase tracking-tight pt-1 text-cyan">Contact Us</h2>
+                </div>
+                <p class="text-white mb-4">If you have any questions about this Privacy Policy, please contact us:</p>
+                <ul class="space-y-2 font-mono text-sm mb-6">
+                    <li class="li-ok"><span class="text-cyan font-bold">&gt;</span> By email: <a href="mailto:corphaxnation@gmail.com" class="text-cyan hover:underline">corphaxnation@gmail.com</a></li>
+                    <li class="li-ok"><span class="text-cyan font-bold">&gt;</span> By visiting our Contact Us page: <a href="https://haxnation.org/contact/" target="_blank" class="text-cyan hover:underline">haxnation.org/contact</a></li>
+                </ul>
+                <a href="index.html#contact" class="btn-primary inline-block">Contact Haxnation</a>
+            </div>
+
+            <!-- Cross-link -->
+            <div class="text-center pt-4">
+                <p class="font-mono text-xs uppercase tracking-widest text-ink">
+                    Also read our <a href="terms-and-conditions.html" class="text-cyan font-bold hover:underline">Terms &amp; Conditions</a>
+                </p>
+            </div>
+
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="bg-ink text-white py-16 relative z-10 border-t-8 border-cyan">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-12 border-b-2 border-gray-800 pb-12">
+                <!-- Brand Section -->
+                <div class="md:col-span-2">
+                    <h3 class="text-3xl font-black uppercase mb-4 text-cyan">Haxnation</h3>
+                    <p class="text-gray-400 font-mono text-sm mb-6 max-w-md">
+                        Where Hackers Thrive - We are committed to offering exceptional cybersecurity education and services at the most competitive rates.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="mailto:corphaxnation@gmail.com" class="w-10 h-10 bg-white text-ink border-2 border-white flex items-center justify-center hover:bg-cyan hover:border-cyan hover:shadow-[2px_2px_0_0_#ffffff] transition-all">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        </a>
+                        <a href="https://www.instagram.com/haxnation" class="w-10 h-10 bg-white text-ink border-2 border-white flex items-center justify-center hover:bg-cyan hover:border-cyan hover:shadow-[2px_2px_0_0_#ffffff] transition-all">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.358-.2 6.78-2.618 6.98-6.98.058-1.281.072-1.689.072-4.948 0-3.259-.014-3.667-.072-4.947-.2-4.358-2.618-6.78-6.98-6.98-1.281-.059-1.689-.073-4.948-.073z"></path><path d="M12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+                        </a>
+                        <a href="https://linkedin.com/company/haxnation" class="w-10 h-10 bg-white text-ink border-2 border-white flex items-center justify-center hover:bg-cyan hover:border-cyan hover:shadow-[2px_2px_0_0_#ffffff] transition-all">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-xl font-black uppercase tracking-widest mb-4">Quick Links</h4>
+                    <ul class="space-y-2 font-mono text-sm">
+                        <li><a href="index.html#offerings" class="text-gray-400 hover:text-cyan transition-colors">&gt; Offerings</a></li>
+                        <li><a href="index.html#about" class="text-gray-400 hover:text-cyan transition-colors">&gt; About</a></li>
+                        <li><a href="index.html#products" class="text-gray-400 hover:text-cyan transition-colors">&gt; Products</a></li>
+                        <li><a href="index.html#community" class="text-gray-400 hover:text-cyan transition-colors">&gt; Community</a></li>
+                        <li><a href="index.html#contact" class="text-gray-400 hover:text-cyan transition-colors">&gt; Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Resources -->
+                <div>
+                    <h4 class="text-xl font-black uppercase tracking-widest mb-4">Resources</h4>
+                    <ul class="space-y-2 font-mono text-sm">
+                        <li><a href="https://jobs.haxnation.org/" class="text-gray-400 hover:text-cyan transition-colors">&gt; Haxnation Jobs</a></li>
+                        <li><a href="https://ctf.haxnation.org/" class="text-gray-400 hover:text-cyan transition-colors">&gt; CTF Platform</a></li>
+                        <li><a href="https://github.com/A-Y-U-S-H-Y-A/project-haxnation" class="text-gray-400 hover:text-cyan transition-colors">&gt; Open Source Repo</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
             <div class="flex flex-col md:flex-row justify-between items-center gap-4">
                 <div class="text-center md:text-left">
                     <p class="text-gray-400 font-mono text-xs">
@@ -142,9 +365,9 @@
                     </p>
                 </div>
                 <div class="flex flex-wrap justify-center md:justify-end gap-4 md:gap-6 font-mono text-xs">
-                    <a href="/privacy-policy.html" class="text-white hover:text-cyan transition-colors">Privacy Policy</a>
-                    <a href="/terms-and-conditions.html" class="text-white hover:text-cyan transition-colors">Terms & Conditions</a>
-                    <a href="/refund-policy.html" class="text-white hover:text-cyan transition-colors">Refund Policy</a>
+                    <a href="privacy-policy.html" class="text-cyan transition-colors">Privacy Policy</a>
+                    <a href="terms-and-conditions.html" class="text-gray-400 hover:text-cyan transition-colors">Terms &amp; Conditions</a>
+                    <a href="refund-policy.html" class="text-gray-400 hover:text-cyan transition-colors">Refund Policy</a>
                 </div>
             </div>
         </div>
