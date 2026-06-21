@@ -1,532 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Terms and Conditions - Haxnation</title>
-
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            line-height: 1.7;
-            max-width: 950px;
-            margin: 0 auto;
-            padding: 30px 20px;
-            color: #333;
-            background: #fff;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haxnation - {title}</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="images/favicon.ico" title="Favicon"/>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        canvas: '#fafafa', ink: '#0b0b0b', card: '#ffffff',
+                        cyan: '#5ce1e6', danger: '#ff2a2a',
+                        success: '#00e676', warning: '#ffeb3b'
+                    },
+                    fontFamily: {
+                        sans: ['"Inter"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    }
+                }
+            }
         }
-
-        h1 {
-            color: #111827;
-            border-bottom: 3px solid #2563eb;
-            padding-bottom: 12px;
-        }
-
-        h2 {
-            color: #1f2937;
-            margin-top: 40px;
-        }
-
-        h3 {
-            color: #374151;
-            margin-top: 24px;
-        }
-
-        p, li {
-            color: #4b5563;
-        }
-
-        ul {
-            padding-left: 20px;
-        }
-
-        .last-updated {
-            color: #6b7280;
-            font-style: italic;
-            margin-bottom: 25px;
-        }
-
-        .highlight {
-            background: #f3f4f6;
-            padding: 18px;
-            border-left: 4px solid #2563eb;
-            border-radius: 6px;
-            margin-bottom: 25px;
-        }
-
-        .warning {
-            background: #fff7ed;
-            border-left: 4px solid #f97316;
-            padding: 18px;
-            border-radius: 6px;
-            margin: 25px 0;
-        }
-
-        a {
-            color: #2563eb;
-            text-decoration: none;
-        }
-
-        hr {
-            margin-top: 50px;
-            border: none;
-            border-top: 1px solid #e5e7eb;
-        }
-
-        .footer {
-            text-align: center;
-            color: #6b7280;
-            font-size: 14px;
-            margin-top: 20px;
+    </script>
+    <style type="text/tailwindcss">
+        @layer components {
+            .btn-primary {
+                @apply font-mono uppercase tracking-widest font-bold bg-cyan text-ink border-2 border-ink px-6 py-3 shadow-[4px_4px_0_0_#0b0b0b] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0_0_#0b0b0b] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all duration-75 focus:outline-none focus:ring-2 focus:ring-cyan focus:ring-offset-2;
+            }
         }
     </style>
 </head>
 
-<body>
-
-    <h1>Terms and Conditions</h1>
-
-    <p class="last-updated">
-        Last Updated: May 27, 2026
-    </p>
-
-    <div class="highlight">
-        <p>
-            Welcome to Haxnation. These Terms and Conditions ("Terms")
-            govern your access to and use of our website, platforms,
-            products, educational services, cybersecurity services,
-            and related offerings.
-        </p>
-
-        <p>
-            By accessing or using Haxnation services, you agree to be
-            legally bound by these Terms. If you do not agree with
-            any part of these Terms, you must discontinue use of
-            our services immediately.
-        </p>
-    </div>
-
-    <h2>1. About Haxnation</h2>
-
-    <p>
-        Haxnation is a cybersecurity education and services company
-        focused on practical learning, Capture The Flag (CTF)
-        experiences, recruitment solutions, curriculum design,
-        and cybersecurity community initiatives.
-    </p>
-
-    <p>Our offerings include, but are not limited to:</p>
-
-    <ul>
-        <li>Custom CTF challenge development</li>
-        <li>Educational and competitive CTF platforms</li>
-        <li>Cybersecurity curriculum design</li>
-        <li>Cybersecurity workshops and speaker sessions</li>
-        <li>Haxnation Jobs recruitment platform</li>
-        <li>Open-source cybersecurity projects and community initiatives</li>
-    </ul>
-
-    <h2>2. Eligibility</h2>
-
-    <p>
-        You must be at least 13 years old to use our services.
-        If you are under 18 years old, you must use our services
-        under parental or guardian supervision.
-    </p>
-
-    <p>
-        If you use Haxnation on behalf of an organization,
-        institution, or company, you represent that you are
-        authorized to bind that entity to these Terms.
-    </p>
-
-    <h2>3. Services and Products</h2>
-
-    <h3>3.1 Haxnation Jobs Platform</h3>
-
-    <p>
-        Haxnation Jobs is a recruitment and referral platform
-        designed to connect recruiters, organizations,
-        applicants, and referrers.
-    </p>
-
-    <p>Available offerings may include:</p>
-
-    <ul>
-        <li>Pro subscriptions</li>
-        <li>Standard job listings</li>
-        <li>Featured job listings</li>
-        <li>Application cap extensions</li>
-        <li>Referral and recruitment tools</li>
-        <li>Analytics and employer tools</li>
-    </ul>
-
-    <h3>3.2 Educational and Cybersecurity Services</h3>
-
-    <p>
-        Haxnation provides cybersecurity-focused educational
-        and enterprise services including:
-    </p>
-
-    <ul>
-        <li>Custom CTF challenge creation</li>
-        <li>Cybersecurity training programs</li>
-        <li>Curriculum development</li>
-        <li>Technical workshops</li>
-        <li>Speaker engagements</li>
-        <li>Enterprise cybersecurity education</li>
-    </ul>
-
-    <p>
-        All B2B services are scoped individually and may require
-        separate agreements, quotations, Statements of Work (SOW),
-        or invoices.
-    </p>
-
-    <h2>4. User Responsibilities</h2>
-
-    <p>You agree to:</p>
-
-    <ul>
-        <li>Provide accurate and truthful information</li>
-        <li>Maintain the confidentiality of your account credentials</li>
-        <li>Use our services lawfully and ethically</li>
-        <li>Comply with all applicable employment, cybersecurity, and privacy laws</li>
-        <li>Respect intellectual property rights</li>
-        <li>Not misuse our infrastructure or platforms</li>
-    </ul>
-
-    <p>You must NOT:</p>
-
-    <ul>
-        <li>Attempt unauthorized access to systems or accounts</li>
-        <li>Upload malicious software or harmful content</li>
-        <li>Abuse platform functionality or APIs</li>
-        <li>Scrape or harvest user data without authorization</li>
-        <li>Share active CTF solutions during competitions</li>
-        <li>Use cybersecurity knowledge for illegal activities</li>
-    </ul>
-
-    <h2>5. Employer and Job Posting Responsibilities</h2>
-
-    <p>
-        Users posting jobs or recruitment opportunities are solely
-        responsible for the legality, accuracy, and authenticity
-        of their listings.
-    </p>
-
-    <p>Employers agree that they will not:</p>
-
-    <ul>
-        <li>Post fraudulent or misleading opportunities</li>
-        <li>Discriminate unlawfully against applicants</li>
-        <li>Violate labor or employment regulations</li>
-        <li>Collect applicant information unlawfully</li>
-        <li>Use applicant data outside legitimate recruitment purposes</li>
-    </ul>
-
-    <p>
-        Haxnation reserves the right to remove any listing,
-        suspend accounts, or reject postings that violate these Terms.
-    </p>
-
-    <h2>6. Pricing and Payments</h2>
-
-    <h3>6.1 Transparent Pricing</h3>
-
-    <p>
-        Pricing for Haxnation Jobs products is publicly displayed
-        on our website. Cybersecurity services, enterprise CTFs,
-        and curriculum engagements are custom-priced based on scope,
-        timelines, complexity, and requirements.
-    </p>
-
-    <h3>6.2 Subscription Billing</h3>
-
-    <p>
-        Subscription products may automatically renew at the end
-        of each billing cycle unless cancelled before renewal.
-    </p>
-
-    <ul>
-        <li>Subscriptions are billed in advance</li>
-        <li>Users may cancel future renewals anytime</li>
-        <li>Cancellation does not retroactively refund completed billing periods</li>
-        <li>Features and pricing may change for future billing cycles</li>
-    </ul>
-
-    <h3>6.3 Featured Listings and Visibility</h3>
-
-    <p>
-        Featured listings and promotional upgrades improve
-        visibility within the platform but do not guarantee:
-    </p>
-
-    <ul>
-        <li>Applications</li>
-        <li>Candidate engagement</li>
-        <li>Hiring outcomes</li>
-        <li>Traffic or impressions</li>
-    </ul>
-
-    <h3>6.4 Application Cap Extensions</h3>
-
-    <p>
-        Application cap extensions apply only to the specific
-        job listing purchased for and are non-transferable.
-    </p>
-
-    <h3>6.5 Custom B2B Services</h3>
-
-    <p>
-        Enterprise cybersecurity services are priced based on
-        project scope, timelines, deployment requirements,
-        revisions, infrastructure, support obligations,
-        and organizational requirements.
-    </p>
-
-    <p>
-        Quotes and estimates may change before final execution
-        of contracts or Statements of Work.
-    </p>
-
-    <h3>6.6 Taxes</h3>
-
-    <p>
-        Users are responsible for applicable taxes, duties,
-        or governmental charges associated with purchases.
-    </p>
-
-    <h2>7. Refunds and Cancellations</h2>
-
-    <p>
-        Refund eligibility is governed by our Refund and
-        Cancellation Policy.
-    </p>
-
-    <ul>
-        <li>Digital products may become non-refundable once accessed or delivered</li>
-        <li>Custom enterprise services may become non-refundable once work begins</li>
-        <li>Subscription fees already billed are generally non-refundable unless required by law</li>
-        <li>Chargebacks or payment disputes made fraudulently may result in account suspension</li>
-    </ul>
-
-    <h2>8. Intellectual Property</h2>
-
-    <h3>8.1 Ownership</h3>
-
-    <p>
-        All Haxnation branding, software, designs, educational
-        materials, platform functionality, and proprietary content
-        are owned by Haxnation unless otherwise stated.
-    </p>
-
-    <h3>8.2 Client Work</h3>
-
-    <p>
-        Ownership and licensing terms for custom enterprise work
-        shall be defined within separate contracts or agreements.
-    </p>
-
-    <h3>8.3 User Content</h3>
-
-    <p>
-        Users retain ownership of their submitted resumes,
-        profiles, and uploaded materials, but grant Haxnation
-        a limited license to process and display such content
-        for platform functionality.
-    </p>
-
-    <h3>8.4 Open Source Projects</h3>
-
-    <p>
-        Certain Haxnation community projects may be licensed
-        under open-source licenses such as GNU GPL.
-    </p>
-
-    <h2>9. Ethical Cybersecurity Use</h2>
-
-    <p>
-        Haxnation provides cybersecurity education strictly
-        for ethical, legal, and authorized purposes.
-    </p>
-
-    <p>
-        Users are solely responsible for ensuring their activities
-        comply with all applicable laws and regulations.
-    </p>
-
-    <p>
-        Unauthorized access to systems, networks, or infrastructure
-        is strictly prohibited and may result in account termination
-        and legal action.
-    </p>
-
-    <h2>10. Confidentiality</h2>
-
-    <p>
-        We treat client and organizational information as confidential
-        unless disclosure is legally required or explicitly authorized.
-    </p>
-
-    <p>
-        Additional confidentiality obligations may be governed
-        through separate NDAs or enterprise agreements.
-    </p>
-
-    <h2>11. Service Availability</h2>
-
-    <p>
-        Haxnation may modify, suspend, discontinue,
-        or update services at any time.
-    </p>
-
-    <p>
-        We do not guarantee uninterrupted availability,
-        uptime, compatibility, or error-free operation.
-    </p>
-
-    <h2>12. Disclaimer of Warranties</h2>
-
-    <p>
-        Services are provided on an "AS IS" and
-        "AS AVAILABLE" basis without warranties
-        of any kind.
-    </p>
-
-    <p>
-        Haxnation does not guarantee:
-    </p>
-
-    <ul>
-        <li>Employment outcomes</li>
-        <li>Recruitment success</li>
-        <li>Specific educational outcomes</li>
-        <li>Security improvements</li>
-        <li>Platform uptime</li>
-        <li>Compatibility with all systems</li>
-    </ul>
-
-    <h2>13. Limitation of Liability</h2>
-
-    <p>
-        To the maximum extent permitted by law,
-        Haxnation shall not be liable for:
-    </p>
-
-    <ul>
-        <li>Indirect or consequential damages</li>
-        <li>Lost profits or lost opportunities</li>
-        <li>Business interruption</li>
-        <li>Data loss</li>
-        <li>Recruitment outcomes</li>
-        <li>Third-party conduct</li>
-    </ul>
-
-    <p>
-        Our total liability shall not exceed the amount
-        paid by you to Haxnation during the previous
-        12 months.
-    </p>
-
-    <h2>14. Indemnification</h2>
-
-    <p>
-        You agree to indemnify and hold harmless Haxnation
-        from claims, liabilities, damages, or expenses
-        arising from:
-    </p>
-
-    <ul>
-        <li>Your misuse of the platform</li>
-        <li>Your violation of these Terms</li>
-        <li>Your unlawful activities</li>
-        <li>Your job postings or recruitment practices</li>
-        <li>Your misuse of cybersecurity knowledge</li>
-    </ul>
-
-    <h2>15. Account Suspension and Termination</h2>
-
-    <p>
-        Haxnation reserves the right to suspend or terminate
-        accounts for:
-    </p>
-
-    <ul>
-        <li>Fraudulent activity</li>
-        <li>Abuse of services</li>
-        <li>Chargeback abuse</li>
-        <li>Terms violations</li>
-        <li>Security threats</li>
-        <li>Illegal conduct</li>
-    </ul>
-
-    <h2>16. Third-Party Services</h2>
-
-    <p>
-        Our services may integrate with third-party providers
-        including payment gateways, analytics services,
-        authentication providers, or communication tools.
-    </p>
-
-    <p>
-        Haxnation is not responsible for third-party platforms,
-        policies, or outages.
-    </p>
-
-    <h2>17. Privacy</h2>
-
-    <p>
-        Your use of Haxnation is also governed by our
-        Privacy Policy and Refund Policy.
-    </p>
-
-    <h2>18. Governing Law and Dispute Resolution</h2>
-
-    <p>
-        These Terms shall be governed by and interpreted
-        under the laws of India.
-    </p>
-
-    <p>
-        Any disputes shall first be attempted to be resolved
-        through good-faith negotiations.
-    </p>
-
-    <p>
-        If unresolved, disputes may be subject to mediation,
-        arbitration, or courts located in Mumbai, Maharashtra,
-        India.
-    </p>
-
-    <h2>19. Changes to Terms</h2>
-
-    <p>
-        We may update these Terms periodically.
-    </p>
-
-    <p>
-        Continued use of our services after updates
-        constitutes acceptance of the revised Terms.
-    </p>
-
-    <h2>20. Contact Information</h2>
-
-    <p>
-        If you have questions regarding these Terms,
-        contact us at:
-    </p>
-
-    <ul>
-        <li>Email: corphaxnation@gmail.com</li>
-        <li>Website: https://haxnation.org</li>
-    </ul>
-
-    <hr />
-
-    <div class="footer">
-        © 2026 Haxnation. All Rights Reserved.
-    </div>
-
+<body class="bg-canvas text-ink font-sans min-h-screen antialiased selection:bg-cyan selection:text-ink smooth-scroll">
+    <div class="fixed inset-0 pointer-events-none bg-[linear-gradient(to_right,#80808020_1px,transparent_1px),linear-gradient(to_bottom,#80808020_1px,transparent_1px)] bg-[size:32px_32px]"></div>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 left-0 right-0 z-50 border-b-2 border-ink bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="/" class="flex items-center bg-ink border-2 border-ink px-3 py-1 shadow-[2px_2px_0_0_#0b0b0b] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0_0_#0b0b0b] transition-all duration-75 block">
+                        <img src="images/logo_wt.png" onerror="this.src='images/logo.png'" alt="Haxnation Logo" class="h-6 w-auto block object-contain filter invert">
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8 font-mono text-sm font-bold uppercase">
+                    <a href="/#offerings" class="text-ink hover:text-cyan border-b-4 border-transparent hover:border-cyan pb-1 transition-colors block">Offerings</a>
+                    <a href="/#about" class="text-ink hover:text-cyan border-b-4 border-transparent hover:border-cyan pb-1 transition-colors block">About</a>
+                    <a href="/#contact" class="btn-primary py-2 px-4 text-xs ml-4">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content Section -->
+    <section class="py-20 relative z-10 border-b-2 border-ink min-h-[70vh]">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12">
+                <p class="font-mono text-xs font-bold uppercase tracking-widest text-white mb-4 bg-danger inline-block px-2 border-2 border-ink shadow-[2px_2px_0_0_#0b0b0b]">SYS // DOCUMENTATION</p>
+                <h1 class="text-5xl md:text-7xl font-black text-ink uppercase tracking-tighter leading-none mb-8 border-b-4 border-ink pb-4">
+                    {title}
+                    <span class="inline-block w-4 h-[0.8em] bg-cyan animate-pulse align-middle ml-2 border-2 border-ink"></span>
+                </h1>
+            </div>
+            
+            <div class="prose max-w-none">
+                {content}
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-ink text-white py-16 relative z-10 border-t-8 border-cyan">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="text-center md:text-left">
+                    <p class="text-gray-400 font-mono text-xs">
+                        SYS.DATE: 2026 // HAXNATION. ALL RIGHTS RESERVED.
+                    </p>
+                </div>
+                <div class="flex flex-wrap justify-center md:justify-end gap-4 md:gap-6 font-mono text-xs">
+                    <a href="/privacy-policy.html" class="text-gray-400 hover:text-cyan transition-colors">Privacy Policy</a>
+                    <a href="/terms-and-conditions.html" class="text-gray-400 hover:text-cyan transition-colors">Terms & Conditions</a>
+                    <a href="/refund-policy.html" class="text-gray-400 hover:text-cyan transition-colors">Refund Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
