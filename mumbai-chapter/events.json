@@ -1,1 +1,74 @@
-[]
+[
+  {
+    "id": "evt-lje9IonyRKxNCHU",
+    "title": "Haxnation Mumbai – July Monthly Meet-up",
+    "date": "18 July 2026",
+    "time": "10:30 AM - 03:30 PM",
+    "location": "TalaKunchi Networks Pvt Ltd, 10th floor, Suvidha Square, Swami Vivekanand Rd, Kevni Pada, Andheri West, Mumbai, Maharashtra 400058, India",
+    "description": "",
+    "image": "https://images.lumacdn.com/uploads/2u/1a4a9630-c00a-4898-bcb7-97b6575ad18d.jpg",
+    "raw_date": "2026-07-18T05:00:00.000Z",
+    "blog": "",
+    "youtube": ""
+  },
+  {
+    "id": "evt-uk4k3b0svaeuQtK",
+    "title": "Haxnation Mumbai x Hack The Box Mumbai - June Meet Up",
+    "date": "27 June 2026",
+    "time": "10:30 AM - 03:30 PM",
+    "location": "TalaKunchi Networks Pvt Ltd, 10th floor, Suvidha Square, Swami Vivekanand Rd, Kevni Pada, Andheri West, Mumbai, Maharashtra 400058, India",
+    "description": "",
+    "image": "https://images.lumacdn.com/uploads/6v/9211a0af-060e-47f8-a19d-5574b3b10e34.jpg",
+    "raw_date": "2026-06-27T05:00:00.000Z",
+    "blog": "",
+    "youtube": ""
+  },
+  {
+    "id": "evt-jy0DVY6PBtjl6uq",
+    "title": "Haxnation Mumbai – May Monthly Meet-up",
+    "date": "16 May 2026",
+    "time": "10:30 AM - 03:30 PM",
+    "location": "TalaKunchi Networks Pvt Ltd, 10th floor, Suvidha Square, Swami Vivekanand Rd, Kevni Pada, Andheri West, Mumbai, Maharashtra 400058, India",
+    "description": "",
+    "image": "https://images.lumacdn.com/uploads/dw/af8bec2b-6a51-4d43-8dcd-930941e68e04.jpg",
+    "raw_date": "2026-05-16T05:00:00.000Z",
+    "blog": "",
+    "youtube": ""
+  },
+  {
+    "id": "evt-SfJ1OqsIdmxsH11",
+    "title": "Haxnation Mumbai – April Meetup - Homecoming Event",
+    "date": "25 April 2026",
+    "time": "10:30 AM - 03:30 PM",
+    "location": "DevX, 10th Floor, B Wing, 215 Atrium, Vijay Nagar Colony, J B Nagar, Andheri East, Mumbai, Maharashtra 400093, India",
+    "description": "",
+    "image": "https://images.lumacdn.com/event-covers/77/953e4828-26ac-4928-932f-2630cf84d479.jpg",
+    "raw_date": "2026-04-25T05:00:00.000Z",
+    "blog": "",
+    "youtube": ""
+  },
+  {
+    "id": "evt-Btl9bspNSDGuXJx",
+    "title": "Haxnation Mumbai X Women x Code X Grafana X Mumbai Women Coders  – March Meetup - Women's Special",
+    "date": "07 March 2026",
+    "time": "09:30 AM - 04:30 PM",
+    "location": "TalaKunchi Networks Pvt Ltd, 10th floor, Suvidha Square, Swami Vivekanand Rd, Kevni Pada, Andheri West, Mumbai, Maharashtra 400058, India",
+    "description": "",
+    "image": "https://images.lumacdn.com/event-covers/4m/b24b16e0-8ea4-4388-b144-66338958420e.jpg",
+    "raw_date": "2026-03-07T04:00:00.000Z",
+    "blog": "",
+    "youtube": ""
+  },
+  {
+    "id": "evt-wZ2jeq8YkUAaw8K",
+    "title": "Haxnation Mumbai X FlutterFlow Mumbai X Flutter Mumbai X Swift Mumbai – February Meetup - Mobile Application Security",
+    "date": "28 February 2026",
+    "time": "10:30 AM - 02:30 PM",
+    "location": "TalaKunchi Networks Pvt Ltd, 10th floor, Suvidha Square, Swami Vivekanand Rd, Kevni Pada, Andheri West, Mumbai, Maharashtra 400058, India",
+    "description": "",
+    "image": "https://images.lumacdn.com/event-covers/bm/91fef8f8-81f0-49b7-b89b-7f24c3715274.png",
+    "raw_date": "2026-02-28T05:00:00.000Z",
+    "blog": "",
+    "youtube": ""
+  }
+]
