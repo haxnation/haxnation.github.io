@@ -658,10 +658,14 @@
             const imgElement = imageSrc ? `<img src="${imageSrc}" alt="Event Image" class="w-full h-full object-cover">` : `<div class="w-full h-full bg-cyan flex items-center justify-center text-ink font-bold">EVENT</div>`;
             const descriptionHtml = event.description ? `<p class="text-ink font-mono text-sm mb-4 mt-4 flex-1">${event.description}</p>` : `<p class="text-ink font-mono text-sm mb-4 mt-4 flex-1"></p>`;
 
-            // Blog and YouTube buttons
+            // Blog, YouTube and Luma buttons
             let linksHtml = '';
-            if (event.blog || event.youtube) {
+            if (event.blog || event.youtube || event.luma_url) {
                 linksHtml = `<div class="flex gap-2 mt-auto pt-4 border-t border-gray-200">`;
+                if (event.luma_url) {
+                    const lumaText = isHighlight ? 'Book Now' : 'View on Luma';
+                    linksHtml += `<a href="${event.luma_url}" target="_blank" class="btn-primary flex-1 text-center py-2 text-xs bg-cyan text-ink border-cyan hover:bg-white hover:text-cyan">${lumaText}</a>`;
+                }
                 if (event.blog) {
                     linksHtml += `<a href="${event.blog}" target="_blank" class="btn-secondary flex-1 text-center py-2 text-xs">Read Blog</a>`;
                 }

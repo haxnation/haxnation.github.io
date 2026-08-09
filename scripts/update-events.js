@@ -4,6 +4,32 @@ const path = require('path');
 const EVENTS_JSON_PATH = path.join(__dirname, '../mumbai-chapter/events.json');
 const LUMA_API_URL = 'https://api.luma.com/user/profile/events?username=usr-HkDJKoqznvMGZuW';
 
+function formatAddress(geo) {
+    if (!geo) return 'TBA';
+    
+    const placeName = geo.address || (geo.full_address ? geo.full_address.split(',')[0].trim() : '');
+    const city = geo.city || '';
+    
+    let area = '';
+    if (geo.short_address) {
+        const parts = geo.short_address.split(',').map(s => s.trim());
+        if (parts.length >= 2) {
+            if (parts[parts.length - 1] === city) {
+                area = parts[parts.length - 2];
+            } else {
+                area = parts[parts.length - 1];
+            }
+        }
+    }
+    
+    const components = [];
+    if (placeName) components.push(placeName);
+    if (area && area !== placeName && area !== city) components.push(area);
+    if (city && city !== placeName) components.push(city);
+    
+    return components.length > 0 ? components.join(', ') : (geo.full_address || geo.short_address || 'TBA');
+}
+
 async function main() {
     try {
         console.log('Fetching events from Luma API...');
@@ -48,10 +74,11 @@ async function main() {
                 title: ev.name,
                 date: dateStr,
                 time: timeStr,
-                location: ev.geo_address_info?.full_address || ev.geo_address_info?.short_address || 'TBA',
+                location: formatAddress(ev.geo_address_info),
                 description: ev.description || '',
                 image: ev.cover_url || '',
                 raw_date: ev.start_at,
+                luma_url: ev.url ? `https://luma.com/${ev.url}` : '',
                 blog: '',
                 youtube: ''
             };
