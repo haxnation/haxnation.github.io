@@ -662,6 +662,12 @@
             }
         });
 
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !eventModal.classList.contains('hidden')) {
+                eventModal.classList.add('hidden');
+            }
+        });
+
         // Mobile menu toggle handler
         document.addEventListener('DOMContentLoaded', () => {
             const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
@@ -783,11 +789,12 @@
                     // Show modal for the soonest upcoming event
                     const nextEvent = upcomingEvents[0];
                     modalContent.innerHTML = '';
-                    modalContent.appendChild(createEventCard(nextEvent, false));
-                    // Clean up styling for modal rendering
-                    const modalInnerCard = modalContent.querySelector('.card');
-                    modalInnerCard.classList.remove('h-full', 'shadow-[6px_6px_0_0_#0b0b0b]', 'hover:translate-x-[2px]', 'hover:translate-y-[2px]', 'hover:shadow-[4px_4px_0_0_#0b0b0b]');
-                    modalInnerCard.classList.add('shadow-none', 'border-0', 'p-0');
+                    const modalCard = createEventCard(nextEvent, true);
+                    modalCard.classList.remove('event-card', 'h-full', 'shadow-[6px_6px_0_0_#0b0b0b]', 'hover:translate-x-[2px]', 'hover:translate-y-[2px]', 'hover:shadow-[4px_4px_0_0_#0b0b0b]', 'border-cyan', 'border-4', 'shadow-[8px_8px_0_0_#0b0b0b]');
+                    modalCard.classList.add('show', 'shadow-none', 'border-0', 'p-0', 'bg-transparent');
+                    modalCard.style.opacity = '1';
+                    modalCard.style.transform = 'none';
+                    modalContent.appendChild(modalCard);
                     eventModal.classList.remove('hidden');
                 }
                 
