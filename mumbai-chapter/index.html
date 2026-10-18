@@ -4,13 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="/">
     <title>Haxnation Mumbai - Local Chapter</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="images/favicon.ico" title="Favicon"/>
+    <link rel="shortcut icon" href="favicon.ico" title="Favicon"/>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -146,7 +145,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <img src="images/mumbai_logo.png" alt="Haxnation Mumbai Logo" class="h-8 w-auto block object-contain filter">
+                    <a href="/" title="Back to Haxnation Home">
+                        <img src="images/mumbai_logo.png" alt="Haxnation Mumbai Logo" class="h-8 w-auto block object-contain filter">
+                    </a>
                 </div>
                 <div class="hidden md:flex items-center space-x-8 font-mono text-sm font-bold uppercase">
                     <a href="#collab-events" class="text-ink hover:text-cyan border-b-4 border-transparent hover:border-cyan pb-1 transition-colors block">Collab
@@ -361,7 +362,7 @@
                     </div>
                     <h3 class="text-xl font-black text-ink uppercase mb-1">Ayushya Shah</h3>
                     <div><span class="text-cyan font-mono text-[10px] font-bold bg-ink px-2 py-1 inline-block mb-4 border-2 border-ink shadow-[2px_2px_0_0_#0b0b0b] uppercase">Founder</span></div>
-                    <a href="www.linkedin.com/in/ayushya-shah"
+                    <a href="https://www.linkedin.com/in/ayushya-shah"
                         class="inline-block text-ink hover:text-cyan linkedin-hover">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                             <path
@@ -610,9 +611,14 @@
             </div>
 
             <div class="border-t border-gray-800 mt-8 pt-8 text-center font-mono text-xs">
-                <p class="text-gray-400">
+                <p class="text-gray-400 mb-4">
                     © 2025 Haxnation. All rights reserved. Built with ❤️ for the cybersecurity community.
                 </p>
+                <div class="flex justify-center space-x-6 text-xs">
+                    <a href="/privacy-policy.html" class="text-gray-400 hover:text-cyan transition-colors">Privacy Policy</a>
+                    <a href="/terms-and-conditions.html" class="text-gray-400 hover:text-cyan transition-colors">Terms & Conditions</a>
+                    <a href="/refund-policy.html" class="text-gray-400 hover:text-cyan transition-colors">Refund Policy</a>
+                </div>
             </div>
         </div>
     </footer>
@@ -648,6 +654,28 @@
         
         closeModalBtn.addEventListener('click', () => {
             eventModal.classList.add('hidden');
+        });
+
+        eventModal.addEventListener('click', (e) => {
+            if (e.target === eventModal) {
+                eventModal.classList.add('hidden');
+            }
+        });
+
+        // Mobile menu toggle handler
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            if (mobileMenuToggle && mobileMenu) {
+                mobileMenuToggle.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
+            }
         });
 
         function createEventCard(event, isHighlight = false) {
@@ -712,6 +740,10 @@
 
         // Fetch events and load first batch
         fetch('events.json')
+            .then(res => {
+                if (!res.ok) return fetch('/mumbai-chapter/events.json');
+                return res;
+            })
             .then(response => response.json())
             .then(data => {
                 if (data.length === 0) {
