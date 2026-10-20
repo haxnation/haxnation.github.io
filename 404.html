@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Redirecting...</title>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        (function () {
+            var match = /^\/blog(\/.*)?$/.exec(window.location.pathname);
+            if (!match) return;
+            var rest = match[1] || '/';
+            rest = rest.replace(/index\.html$/, '');
+            if (rest === '') rest = '/';
+            window.location.replace('https://blog.haxnation.org' + rest + window.location.search + window.location.hash);
+        })();
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3a 50%, #2d1b69 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+
+        .glow {
+            text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 0 1rem;
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            color: #d1d5db;
+            margin: 0 0 1.5rem;
+        }
+
+        .brand {
+            background: linear-gradient(90deg, #22d3ee, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: #fff;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            transition: opacity 0.2s ease;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+    <main style="text-align: center; padding: 0 1rem;">
+        <h1 class="title glow">
+            <span class="brand">
+                HAXNATION
+            </span>
+        </h1>
+        <p class="subtitle">The page you are looking for could not be found.</p>
+        <a href="/" class="btn">
+            Back to home
+        </a>
+    </main>
+</body>
+
+</html>
