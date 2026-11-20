@@ -30,6 +30,8 @@ html,body{margin:0;height:100%;background:#111114;font-family:Inter,ui-sans-seri
 .row{display:flex;flex-wrap:wrap;gap:20px;justify-content:center}
 .ft{flex-shrink:0;display:flex;justify-content:space-between;align-items:center;border-top:4px solid var(--ink);padding-top:14px;font:800 22px 'JetBrains Mono',monospace}
 .dk .ft{border-color:var(--cy)}.ft span{background:var(--ink);color:var(--cy);padding:2px 12px;margin-right:12px}.dk .ft span{background:var(--cy);color:var(--ink)}
+.brand{height:22px;width:auto;vertical-align:middle;margin-right:12px}
+.title-logo{display:block;width:420px;height:auto;margin:0 auto 10px}
 .o{display:block;width:100%;text-align:left;font:700 30px Inter,sans-serif;background:#fff;color:var(--ink);border:4px solid var(--ink);padding:16px 28px;margin:0 0 18px;box-shadow:6px 6px 0 var(--ink);cursor:pointer}
 .dk .o{background:#141419;color:#fff;border-color:var(--cy);box-shadow:6px 6px 0 var(--cy)}
 .o:hover{background:var(--cy);color:var(--ink)}
@@ -64,6 +66,7 @@ input{font:700 28px 'JetBrains Mono',monospace;width:100%;padding:14px 18px;bord
 <div id="vp"><div id="stage">
 <div class="slide on" data-d="35"><div class="sc"><div class="hd"><span class="eb"><b>&gt;</b> Session // Cyber security x AI coding</span></div>
 <div class="bd" style="text-align:center;gap:26px">
+<img class="title-logo" src="https://haxnation.org/images/logo.png" alt="HaxNation">
 <div><div class="a" style="font-size:64px;font-weight:900;text-transform:uppercase;letter-spacing:-.03em">Security in the era of</div>
 <div class="a" style="--i:3;font-size:150px;font-weight:900;text-transform:uppercase;letter-spacing:-.04em;line-height:1;background:var(--ink);color:#fff;display:inline-block;padding:6px 44px;margin-top:10px">Vibe <span style="color:var(--cy)">Coding</span></div></div>
 <div class="df a" style="--i:8"><div class="rm">- ship it, hope for the best</div><div class="ad">+ ship it, verify it</div></div></div></div></div>
@@ -125,7 +128,7 @@ input{font:700 28px 'JetBrains Mono',monospace;width:100%;padding:14px 18px;bord
 </div></div>
 <script>
 const $=s=>document.querySelector(s),S=[...document.querySelectorAll('.slide')],sl=ms=>new Promise(r=>setTimeout(r,ms));let i=0,cur=0,qt,at,ap=0,safe=0;
-S.forEach(s=>{const f=document.createElement('div');f.className='ft';f.innerHTML='<div><span>HAX</span>HAXNATION.ORG/MUMBAI</div>';s.firstElementChild.appendChild(f);s.querySelectorAll('.a').forEach((e,k)=>{if(!e.style.getPropertyValue('--i'))e.style.setProperty('--i',k+1)});s.querySelectorAll('.term div').forEach(l=>l.dataset.x=l.textContent)});
+S.forEach(s=>{const f=document.createElement('div');f.className='ft';f.innerHTML="<div><img class='brand' src='https://haxnation.org/images/"+(s.querySelector('.sc').classList.contains('dk')?'logo_wt.png':'logo.png')+"' alt='HaxNation'>HAXNATION.ORG/MUMBAI</div>";s.firstElementChild.appendChild(f);s.querySelectorAll('.a').forEach((e,k)=>{if(!e.style.getPropertyValue('--i'))e.style.setProperty('--i',k+1)});s.querySelectorAll('.term div').forEach(l=>l.dataset.x=l.textContent)});
 function fit(){const v=$('#vp');$('#stage').style.transform='scale('+Math.min(v.clientWidth/1920,v.clientHeight/1080)+')'}
 async function ty(el,t,k){const w=el.tagName=='INPUT';if(w)el.value='';else el.textContent='';for(const ch of t){if(k!=cur)return 0;w?el.value+=ch:el.textContent+=ch;await sl(w?90:22)}return 1}
 async function run(term,k){const L=[...term.children];L.forEach(l=>{l.textContent='';l.style.visibility='hidden'});await sl(900);for(const l of L){if(k!=cur)return;l.style.visibility='visible';if(l.classList.contains('tk')){if(!await ty(l,l.dataset.x,k))return;await sl(350)}else{l.textContent=l.dataset.x;await sl(500)}}}

@@ -17,7 +17,7 @@ h1 span{background:var(--ink);color:#fff;padding:0 .22em;display:inline-block;bo
 .eyebrow span{color:#00b8c0}
 .sub{font:700 .85rem var(--mono);color:#3f3f46;margin:6px 0}.sub b{background:var(--c);color:var(--ink);padding:0 .35em}
 .nav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;border-bottom:4px solid var(--ink);padding-bottom:14px}
-.nav b{font:800 .95rem var(--mono);letter-spacing:.08em}.hax{background:var(--ink);color:var(--c);padding:3px 9px;margin-right:6px}
+.nav b{font:800 .95rem var(--mono);letter-spacing:.08em}.brand{height:22px;width:auto;display:inline-block;vertical-align:middle;margin-right:8px}.hero-logo{display:block;width:min(100%,460px);height:auto;margin:0 0 8px}
 .nav a{font:800 .8rem var(--mono);text-transform:uppercase;color:var(--ink);text-decoration:none;background:#fff;border:2px solid var(--ink);padding:5px 12px;box-shadow:3px 3px 0 var(--ink);margin-right:10px}
 .nav a:hover,.nav a.on{background:var(--c)}
 .tag{font:800 .72rem var(--mono);background:var(--ink);color:var(--c);padding:5px 10px;letter-spacing:.06em}
@@ -69,10 +69,10 @@ details{margin-top:20px;background:#fff;border:3px solid var(--ink);padding:12px
 .foot{margin-top:28px;border-top:4px solid var(--ink);padding-top:14px;font:800 .95rem var(--mono);letter-spacing:.08em}
 </style></head><body>
 <main>
-<nav class="nav"><b><span class="hax">HAX</span>HAXNATION.ORG/MUMBAI</b><span><a href="#">Host</a><a href="#admin">Admin</a></span><span class="tag">[ PLATFORM STATUS: ONLINE ]</span></nav>
+<nav class="nav"><b><img class="brand" src="https://haxnation.org/images/logo.png" alt="HaxNation"> / MUMBAI</b><span><a href="#">Host</a><a href="#admin">Admin</a></span><span class="tag">[ PLATFORM STATUS: ONLINE ]</span></nav>
 <section id="home">
 <div style="margin-top:22px"><span class="eyebrow"><span>&gt;</span> HOST CONSOLE // MUMBAI</span></div>
-<h1>HAXNATION <span>HOST</span></h1>
+<h1><img class="hero-logo" src="https://haxnation.org/images/logo.png" alt="HaxNation"><span>HOST</span></h1>
 <div class="sub">&gt; Where Hackers Thrive</div>
 <div class="sub">Pick a game. Every item shows <b>once</b> per round, in random order. 50+ items per game.</div>
 <div class="grid" id="grid"></div>
@@ -105,7 +105,7 @@ details{margin-top:20px;background:#fff;border:3px solid var(--ink);padding:12px
 <div class="dim" id="amsg"></div>
 <details><summary>Backup / restore (JSON)</summary><textarea id="js"></textarea><div class="bar"><button id="aexp">Show current data</button><button id="aimp">Import JSON above</button><button id="aall">Reset everything</button></div></details>
 </section>
-<div class="foot"><span class="hax">HAX</span> HAXNATION.ORG/MUMBAI</div>
+<div class="foot"><img class="brand" src="https://haxnation.org/images/logo.png" alt="HaxNation"> HAXNATION.ORG/MUMBAI</div>
 </main>
 <script>
 const $=s=>document.querySelector(s);
