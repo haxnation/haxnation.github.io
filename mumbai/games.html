@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HaxNation Host Console</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=JetBrains+Mono:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;--ink:#0b0b0b;--canvas:#fafafa;--c:#5ce1e6;--g:#0b0b0b;--dim:#52525b;--red:#ff2a2a;--ok:#00e676;--mono:"JetBrains Mono","Courier New",monospace;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100vh;background-color:#111114;background-image:linear-gradient(to right,#ffffff0a 1px,transparent 1px),linear-gradient(to bottom,#ffffff0a 1px,transparent 1px);background-size:32px 32px;font-family:Inter,"Helvetica Neue",Arial,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+::selection{background:var(--c);color:var(--ink)}
+main{max-width:1100px;width:calc(100% - 32px);margin:28px auto;padding:28px;background-color:var(--canvas);background-image:linear-gradient(to right,#80808018 1px,transparent 1px),linear-gradient(to bottom,#80808018 1px,transparent 1px);background-size:32px 32px;border:5px solid var(--ink);box-shadow:14px 14px 0 var(--c)}
+h1{font-weight:900;font-size:clamp(2.2rem,7vw,4.6rem);line-height:1.02;text-transform:uppercase;letter-spacing:-.03em;margin:14px 0 8px}
+h1 span{background:var(--ink);color:#fff;padding:0 .22em;display:inline-block;box-shadow:inset 0 -.1em 0 var(--c)}
+.eyebrow{font:800 .85rem var(--mono);text-transform:uppercase;letter-spacing:.12em;background:#fff;padding:7px 14px;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);display:inline-flex;gap:8px}
+.eyebrow span{color:#00b8c0}
+.sub{font:700 .85rem var(--mono);color:#3f3f46;margin:6px 0}.sub b{background:var(--c);color:var(--ink);padding:0 .35em}
+.nav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;border-bottom:4px solid var(--ink);padding-bottom:14px}
+.nav b{font:800 .95rem var(--mono);letter-spacing:.08em}.hax{background:var(--ink);color:var(--c);padding:3px 9px;margin-right:6px}
+.nav a{font:800 .8rem var(--mono);text-transform:uppercase;color:var(--ink);text-decoration:none;background:#fff;border:2px solid var(--ink);padding:5px 12px;box-shadow:3px 3px 0 var(--ink);margin-right:10px}
+.nav a:hover,.nav a.on{background:var(--c)}
+.tag{font:800 .72rem var(--mono);background:var(--ink);color:var(--c);padding:5px 10px;letter-spacing:.06em}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px;margin-top:24px}
+.card{display:block;text-transform:none;letter-spacing:0;background:#fff;border:4px solid var(--ink);box-shadow:8px 8px 0 var(--ink);padding:18px;text-align:left;color:var(--ink);font:inherit}
+.card:hover,.card:focus-visible{background:var(--c);transform:translate(-2px,-2px);box-shadow:10px 10px 0 var(--ink);outline:none}
+.card:active{transform:translate(3px,3px);box-shadow:3px 3px 0 var(--ink)}
+.card .e{font-size:2.2rem}.card h3{margin:.3em 0;font-weight:900;text-transform:uppercase;font-size:1.25rem;letter-spacing:-.01em}
+.card p{margin:0;color:#27272a;font-size:.85rem;font-weight:600;line-height:1.35}
+button,label.btn,a.btn{font:800 .82rem var(--mono);text-transform:uppercase;letter-spacing:.04em;background:#fff;color:var(--ink);border:2px solid var(--ink);padding:9px 16px;cursor:pointer;box-shadow:3px 3px 0 var(--ink);display:inline-flex;align-items:center;gap:8px;text-decoration:none;transition:transform .1s,box-shadow .1s,background .15s}
+button:hover,label.btn:hover,a.btn:hover{background:var(--c);transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
+button:active,label.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+#next,#aadd,#aplay,#snd{background:var(--c)}#next:hover,#aadd:hover,#aplay:hover,#snd:hover{background:var(--ok)}
+.bar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:16px 0}
+.stage{border:5px solid var(--ink);box-shadow:12px 12px 0 var(--c);min-height:52vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;background-color:#0f0f13;color:#fff;background-image:linear-gradient(to right,#ffffff0c 1px,transparent 1px),linear-gradient(to bottom,#ffffff0c 1px,transparent 1px);background-size:32px 32px;margin-bottom:22px}
+#main{width:100%;font-size:clamp(2rem,8vw,5rem);font-weight:900;text-transform:uppercase;letter-spacing:-.03em;line-height:1.05;color:#fff;word-break:break-word}
+#main.blur{filter:blur(18px);user-select:none}
+#sec{font-size:clamp(1.1rem,3vw,1.7rem);margin-top:20px;max-width:820px;min-height:1.4em;font-weight:700;color:#f4f4f5;line-height:1.35}
+#hint{font:800 .9rem var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--c);margin-top:16px}
+.art{width:min(560px,90%);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-size:clamp(4rem,16vw,9rem);position:relative;overflow:hidden;border:4px solid var(--c);box-shadow:6px 6px 0 var(--c);margin:0 auto}
+.art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cap{position:absolute;left:8%;right:8%;border:2px dashed rgba(255,255,255,.7);font:700 .85rem var(--mono);color:rgba(255,255,255,.85);padding:4px}.cap.t{top:6%}.cap.b{bottom:6%}
+/* Presentation mode: photos fill the whole screen */
+body.present{overflow:hidden}
+body.present .stage{position:fixed;inset:0;width:100%;height:100vh;height:100dvh;min-height:0;margin:0;padding:0;border:0;box-shadow:none;background:#000;z-index:60}
+body.present #main{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;word-break:normal}
+body.present .art{width:100%;height:100%;max-width:none;aspect-ratio:auto;border:0;box-shadow:none}
+body.present .art img{object-fit:cover}
+body.present .art span{font-size:clamp(5rem,26vh,16rem);line-height:1}
+body.present .cap{display:none}
+body.present #hint{position:absolute;left:0;right:0;bottom:0;margin:0;padding:56px 210px calc(16px + env(safe-area-inset-bottom)) clamp(14px,3vw,32px);z-index:5;text-align:left;font-size:clamp(.72rem,1.3vw,.95rem);background:linear-gradient(180deg,transparent,#000e);pointer-events:none}
+body.present #sec{position:absolute;left:0;right:0;bottom:74px;margin:0;padding:0 clamp(14px,3vw,32px);z-index:5;text-align:left;text-shadow:0 2px 12px #000;pointer-events:none}
+body.present #cnt{position:fixed;top:calc(14px + env(safe-area-inset-top));right:16px;z-index:70;color:#fff;background:#000b;padding:6px 12px;font-size:.78rem}
+body.present #back{position:fixed;top:calc(14px + env(safe-area-inset-top));left:16px;z-index:70}
+body.present #next{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:70}
+body.present #tm.on{position:fixed;top:calc(12px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:70}
+@media (max-width:600px){body.present #hint{padding-right:120px}}
+#tm{font:900 1.4rem var(--mono);min-width:4ch;padding:4px 12px;border:3px solid var(--ink);background:#fff;text-align:center}
+#tm.z{background:var(--red);color:#fff;animation:bl .5s infinite}@keyframes bl{50%{opacity:.35}}
+.dim{color:var(--dim);font:700 .8rem var(--mono)}
+.tabs{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}.tabs .on{background:var(--ink);color:var(--c)}
+input,textarea{background:#fff;color:var(--ink);border:3px solid var(--ink);border-radius:0;padding:9px;font:600 .9rem var(--mono)}
+input:focus,textarea:focus{outline:none;box-shadow:4px 4px 0 var(--c)}
+input[type=checkbox]{width:18px;height:18px;padding:0;border:0;accent-color:var(--ink)}
+.tw{overflow-x:auto}table{width:100%;border-collapse:collapse;background:#fff;border:3px solid var(--ink)}
+td{padding:6px;border-bottom:2px solid #e4e4e7}td:first-child{color:var(--dim);font:800 .8rem var(--mono);width:6ch}
+#at input,#at textarea{width:100%}#at textarea{height:5em}textarea{width:100%;height:160px}#a0,#a1{flex:1;min-width:160px}
+details{margin-top:20px;background:#fff;border:3px solid var(--ink);padding:12px}summary{cursor:pointer;font:800 .9rem var(--mono);text-transform:uppercase}
+.foot{margin-top:28px;border-top:4px solid var(--ink);padding-top:14px;font:800 .95rem var(--mono);letter-spacing:.08em}
+</style></head><body>
+<main>
+<nav class="nav"><b><span class="hax">HAX</span>HAXNATION.ORG/MUMBAI</b><span><a href="#">Host</a><a href="#admin">Admin</a></span><span class="tag">[ PLATFORM STATUS: ONLINE ]</span></nav>
+<section id="home">
+<div style="margin-top:22px"><span class="eyebrow"><span>&gt;</span> HOST CONSOLE // MUMBAI</span></div>
+<h1>HAXNATION <span>HOST</span></h1>
+<div class="sub">&gt; Where Hackers Thrive</div>
+<div class="sub">Pick a game. Every item shows <b>once</b> per round, in random order. 50+ items per game.</div>
+<div class="grid" id="grid"></div>
+</section>
+<section id="game" hidden>
+<div class="bar"><button id="back">← Menu (Esc)</button><button id="edit">✎ Edit items</button><b id="gt"></b><span class="dim" id="cnt"></span></div>
+<div class="stage"><div id="main"></div><div id="sec"></div><div id="hint"></div></div>
+<div class="bar">
+<button id="next">Next ▶ (Space)</button>
+<button id="rev">Reveal / Hide (R)</button>
+<button id="tbtn">⏱ Timer (T)</button><span id="tm">--</span>
+<button id="snd" hidden>🔊 Play sound (P)</button>
+<a id="play" class="btn" hidden target="_blank" rel="noopener">🔊 Find sound on YouTube</a>
+<label class="btn" id="upl" hidden>＋ Add own images<input id="file" type="file" accept="image/*" multiple hidden></label>
+<label class="dim" id="autol" hidden><input type="checkbox" id="auto"> auto-advance every 10s</label>
+<label class="dim" id="livel" hidden><input type="checkbox" id="live" checked> live random photos</label>
+<button id="rs">⟲ Reshuffle</button>
+<button id="fsb">⛶ Full screen (F)</button>
+</div>
+<div class="dim" id="note"></div>
+</section>
+<section id="admin" hidden>
+<div style="margin-top:22px"><span class="eyebrow"><span>&gt;</span> ADMIN CONSOLE // MUMBAI</span></div><h1>Manage Items</h1>
+<div class="sub">Changes save in <b>this browser only</b>. Keep 50+ items per game so nothing repeats in a round.</div>
+<div class="tabs" id="tabs"></div>
+<div class="bar"><b id="ac"></b><input id="aq" placeholder="search…"><button id="aplay">▶ Play this game</button><button id="arst">Reset this game</button></div>
+<div class="bar" id="sndbox" hidden><label class="btn">🎵 Add sound clips<input id="sf" type="file" accept="audio/*" multiple hidden></label><button id="sclr">Clear all clips</button><span class="dim" id="sinfo"></span></div>
+<div class="tw"><table id="at"></table></div>
+<div class="bar" id="addbar"><input id="a0"><input id="a1"><button id="aadd">＋ Add</button></div>
+<div class="dim" id="amsg"></div>
+<details><summary>Backup / restore (JSON)</summary><textarea id="js"></textarea><div class="bar"><button id="aexp">Show current data</button><button id="aimp">Import JSON above</button><button id="aall">Reset everything</button></div></details>
+</section>
+<div class="foot"><span class="hax">HAX</span> HAXNATION.ORG/MUMBAI</div>
+</main>
+<script>
+const $=s=>document.querySelector(s);
+let pres=false;
+function present(on){on=!!on;document.body.classList.toggle("present",on);if(on===pres)return;pres=on;
+const full=document.fullscreenElement||document.webkitFullscreenElement;
+if(!on){if(full){const r=document.exitFullscreen?document.exitFullscreen():(document.webkitExitFullscreen&&document.webkitExitFullscreen());if(r&&r.catch)r.catch(()=>{})}}
+else if(!full){const el=document.documentElement,f=el.requestFullscreen||el.webkitRequestFullscreen;if(f){const r=f.call(el);if(r&&r.catch)r.catch(()=>{})}}}
+const sh=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const L=s=>s.split("|");
+const pal=["linear-gradient(135deg,#ff4d6d,#ffb347)","linear-gradient(135deg,#00c6ff,#7b2ff7)","linear-gradient(135deg,#0f9b0f,#00ff9c)","linear-gradient(135deg,#f953c6,#b91d73)","linear-gradient(135deg,#232526,#4f8068)"];
+const scenes=L("🏝️🦜|🚀🌙|🐘🎩|🏰🐉|🧊🔥|🎡🌃|🛶🌋|🦖🏙️|🍕🛸|🐙🎷|🌵🚲|🏔️⛺|🎪🦁|🤖🌸|🕰️🧙|🚂🌈|🐧🧊|🎸🔥|🦄🌊|🧁🏰|🛰️🌍|🐝🍯|⛵🌅|🧑‍🚀🪐|🎨🐢");
+const slides=[];scenes.forEach((s,i)=>{slides.push({e:s,g:pal[i%5]});slides.push({e:s,g:pal[(i+2)%5]})});
+const memes=L("😅🔥🐶|🤯|😭🐛|🥲☕|😎💻|🫠|😱📉|🤡🚀|🙃🧑‍💻|🤔🧠|😤🖱️|🥳🐞|😴⌨️|🤓☝️|😬📧|🙄🔄|😮‍💨🧯|🤝🐙|🦆💬|🐱⌨️|👀📱|🧐🔍|😵‍💫🌀|🥵🖥️|😇🚢|🤠🐴|🫡🛠️|🙈🔒|🤖❤️|👻🧟|🏃‍♂️💨|🧘‍♂️🪷|🤑💸|😈🔓|🥹🔋|🤐🤫|😏✅|🫣📉|🧑‍🚒🔥|🪦📁|🍿👀|🧙‍♂️✨|🦖🖥️|🐌📶|🪫📵|🎢📈|⏰😩|🛌💤|🤷‍♂️❓|🏆🥇");
+const art=(c,i)=>"<div class='art' style='background:"+(c||pal[i%5])+"'>"+(i.img?"<img alt='' src='"+i.img+"'>":i.e)+"</div>";
+const G={
+logo:{t:"Draw the Logo",e:"🎨",d:"A product or language is named. Everyone draws its logo from memory, then compare with the real one. Press R to hide or show the word.",sec:60,tog:1,
+items:L("Chrome|Android|Python|Java|JavaScript|GitHub|Linux Tux|Firefox|Docker|Kubernetes|React|Flutter|Firebase|Google Cloud|Gmail|Google Maps|YouTube|WhatsApp|Instagram|Spotify|Slack|Discord|Zoom|VS Code|Rust|Go (Gopher)|Node.js|TypeScript|Kotlin|Swift|Apple|Windows|Wikipedia|Wi-Fi|Bluetooth|USB|Tor|Git|MongoDB|PostgreSQL|Redis|Wireshark|Kali Linux|Gemini|Telegram|LinkedIn|Netflix|Uber|PayPal|Stack Overflow|Figma|Notion"),
+r:i=>({m:i,h:"▌ DRAW THE LOGO · from memory, no phones"})},
+pic:{t:"Tech Pictionary",e:"✏️",d:"Same screen as Draw the Logo. Show the word to the drawer, then press R to hide it before the table guesses.",sec:90,tog:1,
+items:L("Firewall|Phishing|Password|Cloud|Bug|Merge conflict|Rubber duck|Friday deployment|Legacy code|Wi-Fi|Hacker|Ransomware|Backup|404 error|Loading spinner|Blue screen|Captcha|Server room|Database|API|Cookie|Encryption|Open source|Pull request|Stack overflow|Infinite loop|Memory leak|Robot|Chatbot|Smart watch|Drone|QR code|Selfie stick|Hackathon|Dark mode|Hamburger menu|Cache|Compiler|Debugging|Deadline|Coffee overdose|Version control|Pixel|Viral video|Trojan horse|Zero-day|Bandwidth|Dial-up|Virtual reality|Blockchain|Deepfake|Two-factor auth"),
+r:i=>({m:i,h:"▌ TECH PICTIONARY · no letters or numbers"})},
+dead:{t:"Killed or Closed",e:"🪦",d:"Name the dead product or company. The room guesses what it did, then Reveal.",sec:30,
+items:L("Google Reader|RSS reader that gathered all your favourite blogs and news sites into one feed. Launched in 2005 and shut down on 1 July 2013, which pushed many people to alternatives like Feedly.|Google+|Google’s social network, launched in 2011 with Circles for sharing with specific groups and a Facebook-style stream. It never caught on widely, and the consumer version closed in April 2019 after a data-exposure bug.|Stadia|Cloud game streaming service that let you play big games on a laptop, phone or TV without a console. Launched in November 2019 and shut down in January 2023.|Google Glass|Smart glasses with a tiny display above the eye, voice control and a camera. Early adopters tested it from 2013, the public version was dropped around 2015 amid privacy worries, and the enterprise edition ended in 2023.|Inbox by Gmail|Experimental email app that bundled messages, let you snooze them and surfaced reminders. It ran from 2014 to April 2019, and many of its ideas moved into regular Gmail.|Google Allo|Smartphone messaging app with AI-suggested replies and a built-in Google Assistant. Launched in 2016, it never rivalled WhatsApp and was shut in March 2019.|Google Hangouts|Chat and video calling service that replaced Google Talk in 2013. It was gradually replaced by Google Chat and Meet and wound down for consumers around 2022.|Picasa|Desktop photo organizer and editor that Google bought in 2004, with face tagging and web albums. It was retired in 2016 in favour of Google Photos.|Orkut|Social network launched in 2004 by Google engineer Orkut Büyükkökten, hugely popular in India and Brazil with communities and scrapbook messages. Closed on 30 September 2014.|Google Wave|Real-time collaboration tool that mixed email, chat and documents in one threaded conversation. Announced in 2009 and abandoned in 2010 because users found it confusing.|Google Buzz|Social stream built into Gmail that exposed the people you emailed most. A privacy backlash followed, and it shut in December 2011.|Google Talk|Early instant messaging client inside Gmail and as a desktop app, built on open standards. It was folded into Hangouts around 2013.|Google Play Music|Music service that let you upload your own library and stream a large catalogue. Replaced by YouTube Music, it ended in December 2020.|Google Daydream|VR platform and phone-based headset that turned compatible Android phones into virtual reality viewers. Launched in 2016, and the hardware was discontinued in 2019.|Fusion Tables|Web tool for uploading data tables and turning them into maps and charts, popular with journalists. Google closed it in December 2019.|Google Answers|Service where you paid a fee to have a vetted researcher answer your question. It launched in 2002 and stopped taking questions in 2006.|Jamboard|Digital whiteboard with sticky notes and handwriting for classes and meetings. Google ended it on 31 December 2024.|Google Podcasts|Podcast listening app with search and episode recommendations. Launched in 2016 and shut in 2024 in favour of YouTube Music.|Google Duo|Simple one-tap video calling app known for good quality on weak connections. Merged into Google Meet in 2022.|Google Currents|Social feed built for Workspace companies, the business successor to Google+. It was replaced by Google Chat spaces in 2023.|Internet Explorer|Microsoft’s browser, bundled with Windows from 1995 and once used by most of the web. Microsoft retired it on 15 June 2022 in favour of Edge.|Vine|App for six-second looping videos that launched a wave of creators in 2013. Twitter bought it and shut it down in January 2017.|MySpace|Leading social network of the mid-2000s with customised profile pages and music. Facebook overtook it around 2008, and a 2019 server migration lost many years of uploaded music.|Napster|1999 peer-to-peer service that let people share MP3s and shook the music industry. Courts forced it offline in 2001, and the brand later returned as a legal service.|Netscape Navigator|One of the first popular graphical web browsers, from 1994. It lost the browser wars to Internet Explorer, its code lived on in Firefox, and support ended in 2008.|Yahoo Messenger|Chat service from 1998 with chatrooms and the famous buzz feature. Yahoo shut it down in July 2018.|AOL Instant Messenger|Chat app with buddy lists and away messages that defined 1990s teenage socialising. AOL shut it down in December 2017.|Windows Phone|Microsoft’s mobile operating system with Live Tiles, launched in 2010 and later renamed Windows 10 Mobile. It never got enough apps, and support ended in December 2019.|Skype|Pioneering free voice and video calling service from 2003 that made international calls cheap. Microsoft retired it on 5 May 2025 in favour of Teams.|Blockbuster|Chain of video rental stores famous for late fees and movie nights. Streaming undercut it, it went bankrupt in 2010, and a single store remains in Bend, Oregon.|Palm Pilot|Pocket-sized handheld organizer from 1996 that stored contacts and calendars and synced with a PC. Smartphones made it obsolete.|Zune|Microsoft’s portable music player and music store, an iPod rival from 2006. Discontinued in 2011.|Flash Player|Browser plug-in that powered animations, games and video for years. Adobe ended support on 31 December 2020 after HTML5 replaced it.|Winamp|Hugely popular customisable MP3 player from 1997 with a llama mascot. AOL announced it would close it in 2013, and it was later sold to Radionomy.|LimeWire|Peer-to-peer file-sharing program that let anyone download music and software. A court order shut it down in October 2010 over copyright.|Friendster|One of the first social networks, launched in 2002 and popular in Asia before Facebook. It was shut down as a social network in 2015.|Pocket|Mozilla’s save-for-later app for articles you wanted to read offline. Mozilla shut it down in July 2025.|Windows Movie Maker|Free video editor bundled with Windows that taught many people to cut clips. Microsoft ended support in January 2017.|MSN Messenger|Microsoft’s chat app from 1999 with emoticons and a screen-shaking nudge. It became Windows Live Messenger and was merged into Skype in 2013.|RealPlayer|Early media player that pioneered streaming audio and video on the web in the late 1990s. It faded as browsers, YouTube and Flash took over.|Digg|Social news site where the community voted stories up to the front page. A controversial redesign in 2010 sent users to Reddit, and it was sold in 2012.|Ask Jeeves|Search engine from 1996 where you typed questions in plain English, with a butler mascot. It rebranded as Ask.com in 2006 and dropped the butler.|AltaVista|One of the first big web search engines, launched in 1995 and later bought by Yahoo. Yahoo shut it down in July 2013.|GeoCities|Free web hosting where people built personal homepages grouped into themed neighbourhoods. Yahoo closed the US site in October 2009.|MiniDisc|Sony’s small recordable music disc from 1992, popular with audiophiles and in Japan. MP3 players made it obsolete, and the last recorders were made in 2013.|Zip Drive|Iomega’s removable disk drive from 1994 that stored 100 MB when floppies held 1.4 MB. Notorious for the click of death, it was replaced by USB flash drives.|Clippy|Microsoft Office’s animated paperclip assistant who offered help writing letters. Introduced in Office 97 and retired from Office 2007.|Periscope|Twitter’s live video streaming app where viewers sent hearts. Launched in 2015 and shut down in March 2021.|Meerkat|Live streaming app that went viral at SXSW in 2015 before Periscope overshadowed it. It shut down in 2016.|BlackBerry OS|BlackBerry’s phone software with a physical keyboard, famous for secure email and BBM. Android and the iPhone took over, and support for the classic phones ended in January 2022.")
+.reduce((a,x,i,r)=>i%2?a:[...a,x+"|"+r[i+1]],[]),
+r:i=>{const p=i.split("|");return{m:p[0],x:p[1],h:"What did it do?"}}},
+snd:{t:"Name That Sound",e:"🔊",d:"The sound plays automatically (P replays). Add real clips in Admin under Name That Sound; every sound has a built-in approximation until you add the real clip. Reveal shows the answer.",sec:20,
+items:L("Dial-up modem|Windows XP startup|Windows 95 startup|Windows shutdown|Windows error ding|Windows 7 startup|Mac startup chime|Nokia ringtone|iPhone Marimba ringtone|WhatsApp message tone|Skype call ringtone|Skype message sound|Discord join sound|Slack knock brush|Zoom join chime|Netflix ta-dum|Intel Inside jingle|THX Deep Note|PlayStation 1 boot|Xbox 360 startup|Game Boy startup|Mario coin|Pac-Man waka|Tetris theme|Tamagotchi beep|AOL You’ve got mail|MSN Messenger nudge|ICQ uh-oh|Gmail notification|Outlook new mail|Android notification|Google Assistant activation|Alexa wake|Siri activation|Camera shutter|Typewriter|Mechanical keyboard typing|Floppy disk drive|Hard disk spinning|CD-ROM drive tray|Printer printing|Fax machine|TV static|USB connect|USB disconnect|Bluetooth connected|Google Pay payment success|PhonePe payment received|Microwave beep|Cash register|Walkie-talkie beep"),
+r:(i,n)=>({m:"🔊 Sound #"+(n+1),x:i,s:i,h:"Listen closely… press P to replay",l:"https://www.youtube.com/results?search_query="+encodeURIComponent(i+" sound")})},
+slide:{t:"Slide Roulette",e:"🎰",d:"Each pitch is 5 slides that follow a story: Problem, Idea, Product, Customers, Vision. The presenter invents a product and ties each photo to it. Topic photos load from LoremFlickr when online and fill the screen; otherwise emoji scenes appear. F toggles full screen in any game.",sec:10,auto:1,items:[],
+r:i=>{const s=i.img||($("#live").checked&&i.u&&!i.bad?i.u:"");return{m:"<div class='art' style='background:"+i.g+"'><span>"+i.e+"</span>"+(s?"<img alt='' src='"+s+"'>":"")+"</div>",h:"▌ SLIDE "+(i.st+1)+"/5 · "+STG[i.st]+" — tie it to your product"}}},
+meme:{t:"Meme Lab",e:"😂",d:"Random blank meme templates from Imgflip’s free API (about 100, each shown once). Everyone writes the best caption. Needs internet; emoji scenes appear if it can’t load. Templates fill the screen.",sec:60,up:1,items:memes,
+r:i=>{const o=typeof i==="string"?{e:i}:i;return{m:"<div class='art' style='background:"+pal[(o.e||"").length%5]+"'>"+(o.img?"<img alt='' style='object-fit:contain;background:#000' src='"+o.img+"'>":o.e)+"<div class='cap t'>caption</div><div class='cap b'>caption</div></div>",h:"Caption it!",f:!!o.img}}}
+};
+const SL=["1|traffic|🚗","1|queue|🧍","1|clutter|🗂️","1|storm|⛈️","1|crowd|🚇","1|darkness|🌑","1|paperwork|📄","1|maze|🌀","1|trash|🗑️","1|fog|🌫️","2|lightbulb|💡","2|puzzle|🧩","2|key|🔑","2|bridge|🌉","2|compass|🧭","2|magnifier|🔍","2|seedling|🌱","2|blueprint|📐","2|chess|♟️","2|toolbox|🧰","3|smartphone|📱","3|laptop|💻","3|circuit|🔌","3|robot|🤖","3|drone|🚁","3|camera|📷","3|headphones|🎧","3|smartwatch|⌚","3|keyboard|⌨️","3|satellite|🛰️","4|students|🎓","4|farmer|🌾","4|doctor|🩺","4|market|🛒","4|commuter|🚆","4|children|🧒","4|grandmother|👵","4|chef|🍳","4|shopkeeper|🏪","4|runner|🏃","5|skyline|🌆","5|sunrise|🌅","5|mountain|⛰️","5|globe|🌍","5|handshake|🤝","5|stairs|🪜","5|forest|🌳","5|galaxy|✨","5|ocean|🌊","5|fireworks|🎆"];
+const D0={logo:G.logo.items,pic:G.pic.items,dead:G.dead.items,snd:G.snd.items,slide:SL,meme:memes};
+let D=JSON.parse(JSON.stringify(D0));
+try{const s=JSON.parse(localStorage.getItem("hx_items")||"null");if(s)for(const k in D0)if(Array.isArray(s[k])&&(k!=="slide"||s[k].every(x=>/^[1-5]\|/.test(x))))D[k]=s[k]}catch(e){}
+const lbl=k=>k==="slide"||k==="meme"?"":itemsOf(k).length+" items";
+const slug=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,""),CL=new Set();let AC,au;
+const idb=()=>new Promise((ok,no)=>{const r=indexedDB.open("hx_snd",1);r.onupgradeneeded=()=>r.result.createObjectStore("s");r.onsuccess=()=>ok(r.result);r.onerror=no});
+const dbp=(m,k,v)=>idb().then(d=>new Promise((ok,no)=>{const o=d.transaction("s",m==="get"?"readonly":"readwrite").objectStore("s"),q=m==="get"?o.get(k):o.put(v,k);q.onsuccess=()=>ok(q.result);q.onerror=no}));
+try{idb().then(d=>{const q=d.transaction("s").objectStore("s").getAllKeys();q.onsuccess=()=>q.result.forEach(k=>CL.add(k))}).catch(()=>{})}catch(e){}
+const ctx=()=>{AC=AC||new AudioContext();AC.resume();return AC};
+const tone=(f,t,d,ty="sine",v=.25)=>{const c=ctx(),o=c.createOscillator(),g=c.createGain(),s=c.currentTime+t;o.type=ty;o.frequency.value=f;g.gain.setValueAtTime(v,s);g.gain.exponentialRampToValueAtTime(.001,s+d);o.connect(g).connect(c.destination);o.start(s);o.stop(s+d+.02)};
+const noise=(t,d,v=.3)=>{const c=ctx(),n=c.sampleRate*d|0,b=c.createBuffer(1,n,c.sampleRate),a=b.getChannelData(0),s=c.createBufferSource(),g=c.createGain();for(let i=0;i<n;i++)a[i]=(Math.random()*2-1)*(1-i/n);g.gain.value=v;s.buffer=b;s.connect(g).connect(c.destination);s.start(c.currentTime+t)};
+const sw=(a,b,t,d,ty="sine",v=.2)=>{const c=ctx(),o=c.createOscillator(),g=c.createGain(),s=c.currentTime+t;o.type=ty;o.frequency.setValueAtTime(a,s);o.frequency.exponentialRampToValueAtTime(b,s+d);g.gain.setValueAtTime(v,s);g.gain.exponentialRampToValueAtTime(.001,s+d+.05);o.connect(g).connect(c.destination);o.start(s);o.stop(s+d+.1)};
+const seq=(a,d,ty)=>a.forEach((f,i)=>f&&tone(f,i*d,d*.95,ty,.2));
+const SY={"mario-coin":()=>{tone(988,0,.08,"square",.15);tone(1319,.08,.45,"square",.15)},
+"nokia-ringtone":()=>seq([659,587,370,415,554,494,294,330,494,440,277,330,440],.15,"square"),
+"tetris-theme":()=>seq([659,494,523,587,523,494,440,440,523,659,587,523,494,523,587,659,523,440,440],.22,"square"),
+"pac-man-waka":()=>{for(let i=0;i<6;i++)tone(i%2?600:300,i*.12,.11,"triangle",.3)},
+"camera-shutter":()=>{noise(0,.05,.6);noise(.1,.09,.5)},
+"microwave-beep":()=>[0,.4,.8].forEach(t=>tone(1000,t,.3,"sine",.3)),
+"walkie-talkie-beep":()=>{tone(1500,0,.12,"square",.12);tone(1000,.15,.1,"square",.12)},
+"cash-register":()=>{noise(0,.1,.5);tone(2093,.1,.9);tone(3135,.1,.6)},
+"usb-connect":()=>{tone(660,0,.12);tone(880,.13,.25)},
+"usb-disconnect":()=>{tone(880,0,.12);tone(660,.13,.25)},
+"bluetooth-connected":()=>{tone(784,0,.1);tone(988,.12,.1);tone(1175,.24,.3)},
+"windows-error-ding":()=>{tone(520,0,.35,"square",.15);tone(390,0,.35,"square",.15)},
+"tv-static":()=>noise(0,1.6,.35),
+"typewriter":()=>{for(let i=0;i<6;i++)noise(i*.13,.04,.6);tone(2200,.9,.6)},
+"dial-up-modem":()=>{tone(2100,0,.5,"sine",.12);tone(1300,.5,.3,"square",.06);noise(.85,1.8,.25);tone(1200,2.7,.4,"square",.06)},
+"tamagotchi-beep":()=>seq([1568,1319,1568,2093],.12,"square"),
+"fax-machine":()=>{for(let i=0;i<6;i++)tone(i%2?1100:2100,i*.22,.2,"square",.08)},
+"windows-xp-startup":()=>{seq([392,523,659,784],.3,"sine");tone(523,.7,1.8,"sine",.12)},
+"windows-95-startup":()=>{seq([262,330,392,523,659],.2,"sine");tone(1046,1,1.3,"sine",.12)},
+"windows-shutdown":()=>seq([659,523,392,330],.28,"sine"),
+"windows-7-startup":()=>{seq([392,494,587,740,988],.18,"sine");tone(784,.9,1.4,"sine",.1)},
+"mac-startup-chime":()=>[262,330,392,523,659].forEach(f=>tone(f,0,2,"sine",.1)),
+"iphone-marimba-ringtone":()=>seq([1319,1568,1319,1175,1568,1319,1175,1047,1319,1568],.11,"triangle"),
+"whatsapp-message-tone":()=>{tone(880,0,.09,"triangle",.3);tone(1320,.1,.16,"triangle",.3)},
+"skype-call-ringtone":()=>seq([880,0,880,0,1047,0,880,0,0,0,880,0,880,0,1047],.1,"sine"),
+"skype-message-sound":()=>seq([1568,1319,1760],.09,"sine"),
+"discord-join-sound":()=>seq([440,587,880],.1,"triangle"),
+"slack-knock-brush":()=>[0,.15,.32].forEach(t=>{tone(150,t,.12,"sine",.6);noise(t,.04,.3)}),
+"zoom-join-chime":()=>{tone(659,0,.2);tone(880,.18,.5)},
+"netflix-ta-dum":()=>{tone(98,0,.35,"sawtooth",.2);tone(98,.42,1.5,"sawtooth",.2);tone(196,.42,1.5,"triangle",.2)},
+"intel-inside-jingle":()=>{seq([554,415,554,830,554],.17,"sine");tone(1108,.9,.7)},
+"thx-deep-note":()=>{const c=ctx(),t=c.currentTime;[1,2,3,4,6,8,12,16,24,32].forEach(m=>{const o=c.createOscillator(),g=c.createGain();o.type="sawtooth";o.frequency.setValueAtTime(100+Math.random()*300,t);o.frequency.exponentialRampToValueAtTime(55*m,t+3);g.gain.setValueAtTime(.01,t);g.gain.linearRampToValueAtTime(.06,t+2.5);g.gain.linearRampToValueAtTime(.001,t+4.5);o.connect(g).connect(c.destination);o.start(t);o.stop(t+4.6)})},
+"playstation-1-boot":()=>{tone(130,0,2.4,"sine",.2);tone(196,.2,2.2,"sine",.15);tone(262,.4,2,"sine",.12);tone(392,.6,1.8,"sine",.1)},
+"xbox-360-startup":()=>{noise(0,1.2,.2);sw(220,440,0,.8,"sawtooth",.08);tone(440,.4,1.2,"sine",.15);tone(880,.7,1.1,"sine",.1)},
+"game-boy-startup":()=>{tone(1047,0,.12,"square",.15);tone(2093,.12,.8,"square",.15)},
+"aol-you-ve-got-mail":()=>{noise(0,.25,.2);seq([784,988,1175],.14,"triangle");tone(1568,.5,.5)},
+"msn-messenger-nudge":()=>{noise(0,.3,.2);for(let i=0;i<8;i++)tone(i%2?300:250,i*.05,.05,"square",.12)},
+"icq-uh-oh":()=>{tone(440,0,.18);tone(330,.22,.35)},
+"gmail-notification":()=>seq([1319,988],.12,"sine"),
+"outlook-new-mail":()=>{tone(659,0,.12,"triangle");tone(988,.14,.18,"triangle");tone(1319,.3,.45,"triangle")},
+"android-notification":()=>{tone(1568,0,.18,"sine",.15);tone(1175,.14,.4,"sine",.15)},
+"google-assistant-activation":()=>seq([1175,1568,2093],.09,"triangle"),
+"alexa-wake":()=>{sw(400,1200,0,.25,"sine",.25);sw(1200,1700,.27,.15,"sine",.2)},
+"siri-activation":()=>{sw(600,1200,0,.1,"sine",.2);sw(900,1800,.13,.12,"sine",.2)},
+"mechanical-keyboard-typing":()=>{for(let i=0;i<12;i++){const t=i*.11+Math.random()*.04;noise(t,.025,.5);tone(1800,t,.03,"square",.08)}},
+"floppy-disk-drive":()=>{for(let i=0;i<12;i++){tone(110+Math.random()*90,i*.08,.07,"sawtooth",.12);noise(i*.08,.04,.15)}},
+"hard-disk-spinning":()=>{sw(60,180,0,1.5,"sawtooth",.1);noise(0,1.8,.08);[.5,.9,1.3].forEach(t=>noise(t,.02,.5))},
+"cd-rom-drive-tray":()=>{sw(120,200,0,.9,"sawtooth",.07);noise(0,.9,.08);noise(.95,.1,.4)},
+"printer-printing":()=>{for(let i=0;i<12;i++){tone(180,i*.12,.1,"sawtooth",.1);noise(i*.12,.08,.2)}},
+"google-pay-payment-success":()=>{seq([784,988,1319],.1,"triangle");tone(1568,.35,.55)},
+"phonepe-payment-received":()=>{seq([1047,1319],.12,"sine");tone(2093,.28,.7);tone(2637,.28,.5,"sine",.15)}};
+function stopSnd(){if(au){au.pause();au=null}}
+async function playSnd(n){stopSnd();const s=slug(n);if(CL.has(s)){try{au=new Audio(URL.createObjectURL(await dbp("get",s)));await au.play();return}catch(e){}}if(SY[s])SY[s]();else $("#hint").textContent="No clip for this one yet. Add it in Admin, or use Find sound on YouTube."}
+function sinfo(){$("#sinfo").textContent=D.snd.filter(x=>CL.has(slug(x))).length+" / "+D.snd.length+" clips saved. Name files like the sound, e.g. windows-xp-startup.mp3."}
+let MT=null;function fetchMemes(){const c=new AbortController();setTimeout(()=>c.abort(),8000);return fetch("https://api.imgflip.com/get_memes",{signal:c.signal}).then(r=>r.json()).then(j=>{let m=j.data.memes;const f=m.filter(x=>x.box_count<=2);if(f.length>=50)m=f;MT=m.map(x=>({img:x.url,e:""}))}).catch(()=>{MT=[]})}
+let RS=1;const STG=["THE PROBLEM","THE IDEA","THE PRODUCT","THE CUSTOMERS","THE VISION"];
+function itemsOf(k){if(k==="meme"&&MT&&MT.length)return MT;if(k!=="slide")return D[k];const S=[[],[],[],[],[]];D.slide.forEach(r=>{const[a,b,c]=r.split("|"),i=a-1;if(i>=0&&i<5&&b)S[i].push({k:b,e:c||"🖼️",st:i})});const T=S.map(sh),P=Math.min(...T.map(x=>x.length)),o=[];for(let p=0;p<P;p++)T.forEach((x,i)=>o.push({...x[p],g:pal[(p+i)%5],u:"https://loremflickr.com/960/640/"+encodeURIComponent(x[p].k)+"?lock="+(RS+p*5+i)}));return o}
+function save(){try{localStorage.setItem("hx_items",JSON.stringify(D))}catch(e){msg("Could not save in this browser")}}
+let cur,pool,n,tm,tid,aid,ups={slide:[],meme:[]};
+$("#grid").innerHTML=Object.keys(G).map(k=>"<button class='card' data-k='"+k+"'><div class='e'>"+G[k].e+"</div><h3>"+G[k].t+"</h3><p>"+G[k].d+"</p><p style='margin-top:8px;color:var(--g)'>"+lbl(k)+"</p></button>").join("");
+$("#grid").onclick=e=>{const c=e.target.closest(".card");if(c)start(c.dataset.k)};
+function start(k){cur=k;present(false);const g=G[k];if(k==="meme"&&MT===null){ldt++;ld=0;stopAuto();clearT();$("#home").hidden=true;$("#admin").hidden=true;$("#game").hidden=false;$("#gt").textContent=g.e+" "+g.t;$("#main").className="";$("#main").textContent="⏳ Fetching meme templates…";$("#sec").textContent="";$("#hint").textContent="";$("#cnt").textContent="";fetchMemes().then(()=>{const empty=!MT||!MT.length;if(cur==="meme"&&!$("#game").hidden)start(k);if(empty)$("#note").textContent="⚠ Meme templates could not load (needs internet). Showing emoji scenes — press Reshuffle to retry."});return}RS=Math.random()*1e5|0;brk=0;ldt++;ld=0;pool=k==="slide"?itemsOf(k):sh([...itemsOf(k),...(ups[k]||[])]);n=-1;
+$("#home").hidden=true;$("#admin").hidden=true;$("#game").hidden=false;$("#gt").textContent=g.e+" "+g.t;$("#note").textContent=g.d;
+$("#upl").hidden=!g.up;$("#autol").hidden=$("#livel").hidden=!g.auto;$("#auto").checked=false;stopAuto();clearT();next()}
+let brk=0,ld=0,ldt=0;
+function load(s){const t=++ldt,it=pool.slice(s,s+5);let d=0;ld=1;present(false);stopAuto();clearT();$("#main").className="";$("#main").textContent="⏳ Loading pitch "+(s/5+1)+"…";$("#hint").textContent="";$("#cnt").textContent="Pitch "+(s/5+1);const up=()=>{$("#sec").textContent=d+" / "+it.length+" photos ready"};up();
+let fails=0;
+Promise.all(it.map(x=>new Promise(r=>{if(x.ok||!x.u){r();return}const urls=[x.u,"https://picsum.photos/seed/hx"+RS+x.k+"/960/640"];
+const go=k=>{if(k>=urls.length){x.bad=1;x.ok=1;fails++;d++;up();r();return}let dn=0;const i=new Image(),nx=ok=>{if(dn)return;dn=1;if(ok){x.u=urls[k];x.ok=1;d++;up();r()}else go(k+1)};i.onload=()=>nx(1);i.onerror=()=>nx(0);setTimeout(()=>nx(0),8000);i.src=urls[k];x.im=i};go(0)}))).then(()=>{if(t!==ldt)return;$("#note").textContent=fails?"⚠ "+fails+" photo(s) could not load, so emoji are shown. Browsers on the published claude.ai link block outside image sites. Open the downloaded haxnation-host.html with internet to get the live photos.":G.slide.d;$("#note").style.color=fails?"var(--red)":"";ld=0;brk=1;n=s-1;next()})}
+function next(){if(ld)return;const g=G[cur];if(cur==="slide"){if(brk){brk=0;if($("#auto").checked){stopAuto();aid=setInterval(next,10000)}}else if(n>=0&&(n+1)%5===0){brk=1;stopAuto();clearT();$("#main").className="";$("#main").textContent="🎤 Pitch over";$("#sec").textContent="That’s 5 slides. Press Next for the next pitch.";$("#hint").textContent="";$("#cnt").textContent="Pitch "+((n+1)/5)+" done";present(false);return}}const tot=cur==="slide"?pool.length-pool.length%5:pool.length;if(++n>=tot){$("#main").className="";$("#main").textContent="✔ All "+pool.length+" done";$("#sec").textContent="Press Reshuffle for a new round.";$("#hint").textContent="";$("#play").hidden=true;n=tot;present(false);return}
+if(cur==="slide"&&n%5===0&&$("#live").checked&&pool.slice(n,n+5).some(x=>x.u&&!x.ok)){load(n);return}const o=g.r(pool[n],n);$("#main").innerHTML=o.m;if(cur==="slide")present(true);else if(cur==="meme")present(!!o.f);document.querySelectorAll("#main img").forEach(m=>m.onerror=()=>{m.remove();if(cur==="meme")present(false)});if(cur==="meme")pool.slice(n+1,n+4).forEach(x=>{if(x.img&&!x.pl){x.pl=new Image();x.pl.src=x.img}});$("#main").className="";$("#sec").textContent="";$("#sec").dataset.x=o.x||"";$("#hint").textContent=o.h||"";
+$("#cnt").textContent=cur==="slide"?"Pitch "+((n/5|0)+1)+" · Slide "+(n%5+1)+" / 5":(n+1)+" / "+pool.length;const p=$("#play");p.hidden=!o.l;if(o.l)p.href=o.l;clearT();stopSnd();$("#snd").hidden=!o.s;$("#snd").dataset.n=o.s||"";if(o.s)playSnd(o.s)}
+function rev(){const g=G[cur];if(g.tog)$("#main").classList.toggle("blur");else $("#sec").textContent=$("#sec").dataset.x||""}
+function clearT(){clearInterval(tid);tm=0;$("#tm").textContent="--";$("#tm").className=""}
+function timer(){clearT();tm=G[cur].sec;const t=$("#tm");t.textContent=tm;t.className="on";tid=setInterval(()=>{tm--;t.textContent=Math.max(tm,0);if(tm<=0){clearInterval(tid);t.className="z on"}},1000)}
+function stopAuto(){clearInterval(aid)}
+$("#auto").onchange=e=>{stopAuto();if(e.target.checked)aid=setInterval(next,10000)};
+$("#next").onclick=next;$("#rev").onclick=rev;$("#tbtn").onclick=timer;$("#rs").onclick=()=>{if(cur==="meme"&&MT&&!MT.length)MT=null;start(cur)};$("#fsb").onclick=()=>present(!pres);
+$("#back").onclick=()=>{present(false);stopSnd();stopAuto();clearT();$("#game").hidden=true;$("#home").hidden=false};
+$("#file").onchange=e=>{[...e.target.files].forEach(f=>{const r=new FileReader();r.onload=()=>{const it={img:r.result,e:"",g:"#000"};ups[cur].push(it);const rest=sh([...pool.slice(n+1),it]);pool=[...pool.slice(0,n+1),...rest]};r.readAsDataURL(f)});e.target.value=""};
+addEventListener("keydown",e=>{if($("#game").hidden||e.target.tagName==="INPUT")return;if(e.code==="Space"||e.key===" "||e.key==="Spacebar"||e.key==="ArrowRight"){e.preventDefault();next()}else if(e.key==="r"||e.key==="R")rev();else if(e.key==="t"||e.key==="T")timer();else if(e.key==="p"||e.key==="P"){if(!$("#snd").hidden)$("#snd").click()}else if(e.key==="f"||e.key==="F")present(!pres);else if(e.key==="Escape")$("#back").click()});
+let ak="logo";
+const msg=t=>{$("#amsg").textContent=t},esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])),cnt=k=>D[k].length;
+function sure(b,f){if(b.dataset.s){f();delete b.dataset.s;b.textContent=b.dataset.o;return}b.dataset.o=b.textContent;b.dataset.s=1;b.textContent="Click again to confirm";setTimeout(()=>{if(b.dataset.s){delete b.dataset.s;b.textContent=b.dataset.o}},3000)}
+function adm(){$("#sndbox").hidden=ak!=="snd";if(ak==="snd")sinfo();const two=ak==="dead",q=$("#aq").value.toLowerCase(),c=cnt(ak);
+$("#tabs").innerHTML=Object.keys(G).map(k=>"<button data-t='"+k+"' class='"+(k===ak?"on":"")+"'>"+G[k].e+" "+G[k].t+" ("+cnt(k)+")</button>").join("");
+$("#ac").innerHTML=G[ak].t+": "+c+" items"+(ak==="slide"?" (stage 1-5 | keyword | emoji; 10 per stage = 10 pitches)":"")+(c<50?" <span style='color:var(--red)'>⚠ under 50</span>":"");
+$("#a1").hidden=!two;$("#a0").placeholder=two?"Product name":(ak==="slide"?"stage|keyword|emoji e.g. 3|robot|🤖":ak==="meme"?"Emoji scene, e.g. 🚀🌙":"New item");$("#a1").placeholder="What it did";
+$("#at").innerHTML=D[ak].map((s,i)=>{if(q&&!s.toLowerCase().includes(q))return"";const p=(two||ak==="slide")?s.split("|"):[s];return"<tr><td>"+(i+1)+(ak==="snd"&&CL.has(slug(s))?" 🎵":"")+"</td>"+p.map((v,j)=>"<td>"+(two&&j===1?"<textarea":"<input")+" data-i='"+i+"' data-j='"+j+"'"+(two&&j===1?">"+esc(v)+"</textarea>":" value=\""+esc(v)+"\">")+"</td>").join("")+"<td><button data-d='"+i+"'>✕</button></td></tr>"}).join("")}
+$("#tabs").onclick=e=>{const t=e.target.closest("button");if(t){ak=t.dataset.t;$("#aq").value="";msg("");adm()}};
+$("#aq").oninput=adm;
+$("#at").onchange=e=>{const t=e.target,i=+t.dataset.i;if(isNaN(i))return;const v=t.value.trim().replace(/\|/g,"/");if(ak==="dead"||ak==="slide"){const p=D[ak][i].split("|");p[+t.dataset.j]=v;D[ak][i]=p.join("|")}else D[ak][i]=v;save();msg("Saved")};
+$("#at").onclick=e=>{const d=e.target.dataset.d;if(d!==undefined){D[ak].splice(+d,1);save();adm();msg("Deleted")}};
+$("#aadd").onclick=()=>{let v=$("#a0").value.trim();if(ak!=="slide")v=v.replace(/\|/g,"/");if(!v)return;if(ak==="slide"&&!/^[1-5]\|[^|]+/.test(v))return msg("Use: stage(1-5)|keyword|emoji");if(ak==="dead")v+="|"+$("#a1").value.trim().replace(/\|/g,"/");if(D[ak].some(x=>x.split("|")[ak==="slide"?1:0].toLowerCase()===(v.split("|")[ak==="slide"?1:0]||"").toLowerCase()))return msg("Already exists");D[ak].unshift(v);$("#a0").value=$("#a1").value="";save();adm();msg("Added")};
+$("#addbar").onkeydown=e=>{if(e.key==="Enter")$("#aadd").click()};
+$("#arst").onclick=e=>sure(e.target,()=>{D[ak]=JSON.parse(JSON.stringify(D0[ak]));save();adm();msg("Reset to defaults")});
+$("#aall").onclick=e=>sure(e.target,()=>{D=JSON.parse(JSON.stringify(D0));save();adm();msg("Everything reset")});
+$("#aexp").onclick=()=>{$("#js").value=JSON.stringify(D,null,1);$("#js").select()};
+$("#aimp").onclick=()=>{try{const s=JSON.parse($("#js").value);let k2=0;for(const k in D0)if(Array.isArray(s[k])&&s[k].every(x=>typeof x==="string")){D[k]=s[k];k2++}save();adm();msg("Imported "+k2+" lists")}catch(e){msg("Invalid JSON")}};
+$("#snd").onclick=e=>playSnd(e.target.dataset.n);
+$("#sf").onchange=async e=>{let m=0;const fs=[...e.target.files];for(const f of fs){const q=slug(f.name.replace(/\.[^.]+$/,"")),it=D.snd.find(x=>slug(x)===q)||D.snd.find(x=>q.length>4&&(slug(x).includes(q)||q.includes(slug(x))));if(it){try{await dbp("put",slug(it),f);CL.add(slug(it));m++}catch(_){}}}e.target.value="";adm();msg("Matched "+m+" of "+fs.length+" files")};
+$("#sclr").onclick=e=>sure(e.target,async()=>{try{const d=await idb();d.transaction("s","readwrite").objectStore("s").clear()}catch(_){}CL.clear();adm();msg("Clips cleared")});
+function route(){const A=location.hash==="#admin";if(A)present(false);document.querySelectorAll(".nav a").forEach((a,i)=>a.classList.toggle("on",(i===1)===A));if(A){stopAuto();clearT();$("#home").hidden=$("#game").hidden=true;$("#admin").hidden=false;adm()}else{$("#admin").hidden=true;if($("#game").hidden){$("#home").hidden=false;document.querySelectorAll(".card").forEach(c=>{c.querySelector("p:last-child").textContent=lbl(c.dataset.k)})}}}
+$("#edit").onclick=()=>{ak=cur;location.hash="#admin"};$("#aplay").onclick=()=>{location.hash="";start(ak)};
+addEventListener("hashchange",route);route();
+</script></body></html>
