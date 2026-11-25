@@ -31,15 +31,12 @@
         const slides = slidesFor(event);
         if (!slides.length) return posterHtml;
 
-        const encoded = JSON.stringify(slides).replace(/'/g, '&#39;');
+        const encoded = JSON.stringify(slides).replace(/&/g, '&amp;').replace(/'/g, '&#39;');
         const nav = slides.length > 1 ? `
             <button type="button" aria-label="Previous photo"
                 class="hax-gallery-prev absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center bg-white border-2 border-ink shadow-[2px_2px_0_0_#0b0b0b] font-black text-lg leading-none hover:bg-cyan">&#8249;</button>
             <button type="button" aria-label="Next photo"
-                class="hax-gallery-next absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center bg-white border-2 border-ink shadow-[2px_2px_0_0_#0b0b0b] font-black text-lg leading-none hover:bg-cyan">&#8250;</button>
-            <div class="absolute bottom-2 left-0 right-0 flex justify-center gap-1">
-                ${slides.map((_, i) => `<button type="button" aria-label="Photo ${i + 1}" data-index="${i}" class="hax-gallery-dot w-2 h-2 rounded-full border border-ink ${i === 0 ? 'bg-cyan' : 'bg-white'}"></button>`).join('')}
-            </div>` : '';
+                class="hax-gallery-next absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center bg-white border-2 border-ink shadow-[2px_2px_0_0_#0b0b0b] font-black text-lg leading-none hover:bg-cyan">&#8250;</button>` : '';
 
         return `<div class="hax-gallery" data-slides='${encoded}' data-index="0">
             <img src="${slides[0]}" alt="Event photos"
@@ -51,7 +48,7 @@
     document.addEventListener('click', event => {
         const target = event.target;
         if (!target || !target.closest) return;
-        const control = target.closest('.hax-gallery-prev, .hax-gallery-next, .hax-gallery-dot');
+        const control = target.closest('.hax-gallery-prev, .hax-gallery-next');
         if (!control) return;
 
         const gallery = control.closest('.hax-gallery');
@@ -62,19 +59,10 @@
         if (!slides.length) return;
 
         event.preventDefault();
-        let index = Number(gallery.dataset.index || 0);
-        if (control.classList.contains('hax-gallery-dot')) {
-            index = Number(control.dataset.index);
-        } else {
-            index = (index + (control.classList.contains('hax-gallery-next') ? 1 : -1) + slides.length) % slides.length;
-        }
+        const index = (Number(gallery.dataset.index || 0) + (control.classList.contains('hax-gallery-next') ? 1 : -1) + slides.length) % slides.length;
         gallery.dataset.index = index;
         const image = gallery.querySelector('.hax-gallery-image');
         if (image) image.src = slides[index];
-        gallery.querySelectorAll('.hax-gallery-dot').forEach((dot, i) => {
-            dot.classList.toggle('bg-cyan', i === index);
-            dot.classList.toggle('bg-white', i !== index);
-        });
     });
 
     window.HaxGallery = { ready: load, slidesFor, imageHtml };

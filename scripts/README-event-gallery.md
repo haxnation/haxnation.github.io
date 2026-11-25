@@ -15,8 +15,9 @@ Recap of our November meet-up #w9n0h2dc
 
 A plain `https://luma.com/w9n0h2dc` link in the post works too. Both forms are recognised.
 
-Any photos attached to that post are downloaded into `mumbai-chapter/gallery/<short-code>/`
-and written to `mumbai-chapter/event-gallery.json`, keyed by the short code.
+Any photos attached to that post are stored as LinkedIn image URLs in
+`mumbai-chapter/event-gallery.json`, keyed by the short code. Nothing is downloaded into the
+repo — the weekly Action refreshes the links so the signed URLs stay valid.
 
 ## Old posts / manual entries
 

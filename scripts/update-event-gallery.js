@@ -1,13 +1,11 @@
 const fs = require('fs');
 const path = require('path');
-const crypto = require('crypto');
 const { chromium } = require('playwright');
 
 const ROOT = path.join(__dirname, '..');
 const EVENTS_PATH = path.join(ROOT, 'mumbai-chapter/events.json');
 const MANUAL_PATH = path.join(__dirname, 'event-gallery.manual.json');
 const OUTPUT_PATH = path.join(ROOT, 'mumbai-chapter/event-gallery.json');
-const GALLERY_ROOT = path.join(ROOT, 'mumbai-chapter/gallery');
 
 const SHOWCASE_URL = 'https://www.linkedin.com/showcase/haxnation-meetups-mumbai/posts/';
 const MAX_SCROLLS = 40;
@@ -101,29 +99,6 @@ function loadManual() {
     return result;
 }
 
-async function downloadImage(url, key) {
-    const hash = crypto.createHash('sha1').update(url).digest('hex').slice(0, 12);
-    const res = await fetch(url, {
-        headers: { 'User-Agent': 'Mozilla/5.0 (compatible; HaxnationGalleryBot/1.0)' }
-    });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
-    const contentType = res.headers.get('content-type') || '';
-    if (!contentType.startsWith('image/')) throw new Error(`Not an image: ${contentType}`);
-    const ext = contentType.includes('png') ? '.png' : contentType.includes('webp') ? '.webp' : '.jpg';
-
-    const buffer = Buffer.from(await res.arrayBuffer());
-    if (buffer.length > 12 * 1024 * 1024) throw new Error('Image larger than 12 MB');
-
-    const relative = `mumbai-chapter/gallery/${key}/${hash}${ext}`;
-    const destination = path.join(ROOT, relative);
-    if (!fs.existsSync(destination)) {
-        fs.mkdirSync(path.dirname(destination), { recursive: true });
-        fs.writeFileSync(destination, buffer);
-    }
-    return `/${relative.replace(/\\/g, '/')}`;
-}
-
 async function main() {
     const events = JSON.parse(fs.readFileSync(EVENTS_PATH, 'utf-8'));
     const validKeys = new Set(
@@ -153,16 +128,8 @@ async function main() {
 
     const output = {};
     for (const key of Object.keys(merged).sort()) {
-        const paths = [];
-        for (const item of merged[key]) {
-            try {
-                paths.push(await downloadImage(item.url, key));
-            } catch (err) {
-                console.warn(`Skipping image for ${key}: ${err.message}`);
-            }
-        }
-        if (paths.length) output[key] = paths;
-        console.log(`${key}: ${paths.length} image(s)`);
+        output[key] = merged[key].map(item => item.url);
+        console.log(`${key}: ${output[key].length} image link(s)`);
     }
 
     fs.writeFileSync(OUTPUT_PATH, JSON.stringify(output, null, 2) + '\n');
