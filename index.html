@@ -590,6 +590,7 @@
         </div>
     </footer>
 
+    <script src="/mumbai-chapter/gallery.js"></script>
     <script>
         // Haxnation Neobrutalist JS Enhancements
 
@@ -720,15 +721,17 @@
                 if (!res.ok) res = await fetch('mumbai-chapter/events.json');
                 if (!res.ok) throw new Error('Events file not found');
                 const events = await res.json();
+                await HaxGallery.ready();
 
                 const latest = [...events]
                     .sort((a, b) => new Date(b.raw_date || b.date) - new Date(a.raw_date || a.date))
                     .slice(0, 3);
 
                 container.innerHTML = latest.map(event => {
-                    const image = event.image
+                    const poster = event.image
                         ? `<img src="${event.image}" alt="${event.title}" class="w-full aspect-square object-cover filter grayscale hover:grayscale-0 transition-all duration-300" loading="lazy">`
                         : `<div class="w-full aspect-square flex items-center justify-center bg-cyan text-ink font-black">EVENT</div>`;
+                    const image = HaxGallery.imageHtml(event, poster);
                     const link = event.blog || event.luma_url || 'https://haxnation.org/mumbai-chapter';
 
                     return `

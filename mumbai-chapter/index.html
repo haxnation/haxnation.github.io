@@ -652,6 +652,7 @@
         </div>
     </div>
 
+    <script src="/mumbai-chapter/gallery.js"></script>
     <script>
         let upcomingEvents = [];
         let pastEvents = [];
@@ -706,9 +707,10 @@
             
             // Handle missing fields gracefully
             const imageSrc = event.image ? (event.image.startsWith('http') ? event.image : `images/${event.image}`) : '';
-            const imageHtml = imageSrc
+            const posterHtml = imageSrc
                 ? `<img src="${imageSrc}" alt="${event.title || 'Event Image'}" class="w-full aspect-square object-cover filter grayscale hover:grayscale-0 transition-all duration-300" loading="lazy">`
                 : `<div class="w-full aspect-square flex items-center justify-center bg-cyan text-ink font-black">EVENT</div>`;
+            const imageHtml = HaxGallery.imageHtml(event, posterHtml);
             const dateText = [event.date, event.time].filter(Boolean).join(' | ');
 
             // Blog, YouTube and Luma buttons
@@ -762,7 +764,8 @@
                 return res;
             })
             .then(response => response.json())
-            .then(data => {
+            .then(async data => {
+                await HaxGallery.ready();
                 if (data.length === 0) {
                     container.innerHTML = '<p class="text-ink font-mono col-span-full text-center py-8">No events currently scheduled. Check back soon!</p>';
                     loadMoreBtn.style.display = 'none';

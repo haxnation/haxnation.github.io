@@ -1,0 +1,12 @@
+{
+  "name": "haxnation-site-scripts",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "update-events": "node update-events.js",
+    "update-event-gallery": "node update-event-gallery.js"
+  },
+  "dependencies": {
+    "playwright": "^1.65.1"
+  }
+}
