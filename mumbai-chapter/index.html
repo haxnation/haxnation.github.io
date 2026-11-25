@@ -150,9 +150,9 @@
                     </a>
                 </div>
                 <div class="hidden md:flex items-center space-x-8 font-mono text-sm font-bold uppercase">
-                    <a href="#collab-events" class="text-ink hover:text-cyan border-b-4 border-transparent hover:border-cyan pb-1 transition-colors block">Collab
-                        Events</a>
                     <a href="#monthly-events" class="text-ink hover:text-cyan border-b-4 border-transparent hover:border-cyan pb-1 transition-colors block">Monthly
+                        Events</a>
+                    <a href="#collab-events" class="text-ink hover:text-cyan border-b-4 border-transparent hover:border-cyan pb-1 transition-colors block">Collab
                         Events</a>
                     <a href="#team" class="text-ink hover:text-cyan border-b-4 border-transparent hover:border-cyan pb-1 transition-colors block">Team</a>
                     <a href="#contact"
@@ -172,10 +172,10 @@
         <!-- Mobile Menu -->
         <div class="mobile-menu hidden md:hidden bg-white border-b-2 border-ink">
             <div class="px-4 pt-2 pb-3 space-y-1 font-mono text-sm font-bold uppercase">
-                <a href="#collab-events"
-                    class="block px-3 py-2 text-ink hover:bg-ink hover:text-white transition-colors border-2 border-transparent hover:border-ink">Collab Events</a>
                 <a href="#monthly-events"
                     class="block px-3 py-2 text-ink hover:bg-ink hover:text-white transition-colors border-2 border-transparent hover:border-ink">Monthly Events</a>
+                <a href="#collab-events"
+                    class="block px-3 py-2 text-ink hover:bg-ink hover:text-white transition-colors border-2 border-transparent hover:border-ink">Collab Events</a>
                 <a href="#team" class="block px-3 py-2 text-ink hover:bg-ink hover:text-white transition-colors border-2 border-transparent hover:border-ink">Team</a>
                 <a href="#contact"
                     class="block mx-3 my-2 btn-primary text-center">Contact</a>
@@ -205,6 +205,46 @@
                         Meet The Team
                     </a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Monthly Events Section -->
+    <section id="monthly-events" class="py-20 relative z-10 bg-canvas border-b-2 border-ink">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl sm:text-6xl font-black text-ink uppercase tracking-tighter leading-none mb-4">Monthly Events</h2>
+                <p class="text-ink font-mono mt-4 max-w-2xl mx-auto mb-6">
+                    Regular community meetups, workshops, and learning sessions
+                </p>
+                <a href="https://lu.ma/user/usr-HkDJKoqznvMGZuW" target="_blank" rel="noopener noreferrer"
+                    class="btn-primary inline-flex items-center text-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                        </path>
+                    </svg>
+                    Book Events on Luma
+                </a>
+            </div>
+
+            <div id="upcoming-events-section" style="display: none;" class="mb-16">
+                <h3 class="text-2xl font-black text-ink uppercase mb-6 border-b-2 border-ink pb-2 text-cyan">Upcoming Events</h3>
+                <div id="upcoming-events-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Upcoming events loaded here -->
+                </div>
+            </div>
+
+            <h3 id="past-events-title" class="text-2xl font-black text-ink uppercase mb-6 border-b-2 border-ink pb-2" style="display: none;">Past Events</h3>
+            <div id="events-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Events will be loaded here -->
+            </div>
+
+            <div class="text-center mt-12">
+                <button id="load-more-btn"
+                    class="btn-secondary px-8 py-3">
+                    Load More Events
+                </button>
             </div>
         </div>
     </section>
@@ -298,46 +338,6 @@
                         <span class="bg-white text-ink font-mono text-[10px] font-bold px-2 py-1 border-2 border-ink shadow-[2px_2px_0_0_#0b0b0b] uppercase">CTF</span>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Monthly Events Section -->
-    <section id="monthly-events" class="py-20 relative z-10 bg-canvas border-b-2 border-ink">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl sm:text-6xl font-black text-ink uppercase tracking-tighter leading-none mb-4">Monthly Events</h2>
-                <p class="text-ink font-mono mt-4 max-w-2xl mx-auto mb-6">
-                    Regular community meetups, workshops, and learning sessions
-                </p>
-                <a href="https://lu.ma/user/usr-HkDJKoqznvMGZuW" target="_blank" rel="noopener noreferrer"
-                    class="btn-primary inline-flex items-center text-center">
-                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
-                        </path>
-                    </svg>
-                    Book Events on Luma
-                </a>
-            </div>
-
-            <div id="upcoming-events-section" style="display: none;" class="mb-16">
-                <h3 class="text-2xl font-black text-ink uppercase mb-6 border-b-2 border-ink pb-2 text-cyan">Upcoming Events</h3>
-                <div id="upcoming-events-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Upcoming events loaded here -->
-                </div>
-            </div>
-
-            <h3 id="past-events-title" class="text-2xl font-black text-ink uppercase mb-6 border-b-2 border-ink pb-2" style="display: none;">Past Events</h3>
-            <div id="events-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Events will be loaded here -->
-            </div>
-
-            <div class="text-center mt-12">
-                <button id="load-more-btn"
-                    class="btn-secondary px-8 py-3">
-                    Load More Events
-                </button>
             </div>
         </div>
     </section>
@@ -590,10 +590,10 @@
                 <div>
                     <h4 class="text-lg font-black uppercase mb-4 text-white">Quick Links</h4>
                     <ul class="space-y-2">
-                        <li><a href="#collab-events" class="text-white hover:text-cyan transition-colors">Collab
-                                Events</a></li>
                         <li><a href="#monthly-events"
                                 class="text-white hover:text-cyan transition-colors">Monthly Events</a></li>
+                        <li><a href="#collab-events" class="text-white hover:text-cyan transition-colors">Collab
+                                Events</a></li>
                         <li><a href="#team" class="text-white hover:text-cyan transition-colors">Team</a></li>
                         <li><a href="#contact" class="text-white hover:text-cyan transition-colors">Contact</a>
                         </li>
