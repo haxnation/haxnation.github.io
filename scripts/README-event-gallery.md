@@ -13,11 +13,12 @@ for example:
 Recap of our November meet-up #w9n0h2dc
 ```
 
-A plain `https://luma.com/w9n0h2dc` link in the post works too. Both forms are recognised.
+Only the hashtag form is recognised — a plain `https://luma.com/w9n0h2dc` link is not.
 
 Any photos attached to that post are stored as LinkedIn image URLs in
 `mumbai-chapter/event-gallery.json`, keyed by the short code. Nothing is downloaded into the
-repo — the weekly Action refreshes the links so the signed URLs stay valid.
+repo — the weekly Action refreshes the links so the signed URLs stay valid. Events without a
+matching hashtag keep their normal Luma poster.
 
 ## Old posts / manual entries
 

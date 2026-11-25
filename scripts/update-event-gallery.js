@@ -18,12 +18,9 @@ function slugFromUrl(url) {
 }
 
 function keysInText(text, validKeys) {
-    const found = new Set();
-    const urls = String(text || '').match(/luma\.com\/([A-Za-z0-9]+)/gi) || [];
-    urls.forEach(u => found.add(u.split('/').pop().toLowerCase()));
     const tags = String(text || '').match(/#[A-Za-z0-9]+/g) || [];
-    tags.forEach(t => found.add(t.slice(1).toLowerCase()));
-    return [...found].filter(k => validKeys.has(k));
+    const found = new Set(tags.map(tag => tag.slice(1).toLowerCase()));
+    return [...found].filter(key => validKeys.has(key));
 }
 
 async function scrapeLinkedIn(validKeys) {
