@@ -430,24 +430,19 @@
                 </p>
             </div>
             
-            <div id="community-events" class="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
+            <div id="community-events" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
                 <!-- Latest chapter events loaded via JS from /mumbai-chapter/events.json -->
-                <div class="card flex flex-col p-4 bg-canvas animate-pulse">
+                <div class="card flex flex-col p-5 bg-canvas animate-pulse">
                     <div class="aspect-square bg-gray-200 mb-4"></div>
                     <div class="h-5 bg-gray-200 rounded mb-2 w-5/6"></div>
                     <div class="h-3 bg-gray-200 rounded w-1/2"></div>
                 </div>
-                <div class="card flex flex-col p-4 bg-canvas animate-pulse">
+                <div class="card flex flex-col p-5 bg-canvas animate-pulse">
                     <div class="aspect-square bg-gray-200 mb-4"></div>
                     <div class="h-5 bg-gray-200 rounded mb-2 w-5/6"></div>
                     <div class="h-3 bg-gray-200 rounded w-1/2"></div>
                 </div>
-                <div class="card flex flex-col p-4 bg-canvas animate-pulse">
-                    <div class="aspect-square bg-gray-200 mb-4"></div>
-                    <div class="h-5 bg-gray-200 rounded mb-2 w-5/6"></div>
-                    <div class="h-3 bg-gray-200 rounded w-1/2"></div>
-                </div>
-                <div class="card flex flex-col p-4 bg-canvas animate-pulse">
+                <div class="card flex flex-col p-5 bg-canvas animate-pulse">
                     <div class="aspect-square bg-gray-200 mb-4"></div>
                     <div class="h-5 bg-gray-200 rounded mb-2 w-5/6"></div>
                     <div class="h-3 bg-gray-200 rounded w-1/2"></div>
@@ -728,7 +723,7 @@
 
                 const latest = [...events]
                     .sort((a, b) => new Date(b.raw_date || b.date) - new Date(a.raw_date || a.date))
-                    .slice(0, 4);
+                    .slice(0, 3);
 
                 container.innerHTML = latest.map(event => {
                     const image = event.image
@@ -737,11 +732,11 @@
                     const link = event.blog || event.luma_url || 'https://haxnation.org/mumbai-chapter';
 
                     return `
-                        <article class="card flex flex-col p-4 bg-canvas">
+                        <article class="card flex flex-col p-5 bg-canvas">
                             <div class="border-2 border-ink mb-4 overflow-hidden shadow-[4px_4px_0_0_#0b0b0b]">
                                 ${image}
                             </div>
-                            <h3 class="text-xs sm:text-sm font-black text-ink uppercase mb-1 leading-tight">
+                            <h3 class="text-base font-black text-ink uppercase mb-1 leading-tight">
                                 <a href="${link}" target="_blank" rel="noopener noreferrer" class="hover:text-cyan transition-colors">${event.title}</a>
                             </h3>
                             <p class="font-mono text-[10px] font-bold text-gray-500 mb-1">> ${event.date || ''}</p>
@@ -753,7 +748,7 @@
             } catch (e) {
                 console.warn('Chapter events load failed:', e);
                 container.innerHTML = `
-                    <div class="col-span-2 md:col-span-4 card text-center py-12">
+                    <div class="col-span-full card text-center py-12">
                         <p class="text-ink font-mono mb-4">Unable to load latest events</p>
                         <a href="/mumbai-chapter" class="btn-primary inline-block">View All Events</a>
                     </div>
