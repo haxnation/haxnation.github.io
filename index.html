@@ -426,52 +426,31 @@
                     Mumbai Chapter
                 </h2>
                 <p class="text-ink font-mono mt-4">
-                    Our local community chapter events and collaborations in Mumbai
+                    Our latest community meetups, workshops and collaborations in Mumbai
                 </p>
             </div>
             
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="card flex flex-col p-4 bg-canvas">
-                    <div class="border-2 border-ink mb-4 overflow-hidden shadow-[4px_4px_0_0_#0b0b0b]">
-                        <img src="images/gallery-images/5.png" alt="GDG TechFest" class="w-full h-48 object-cover filter grayscale hover:grayscale-0 transition-all duration-300">
-                    </div>
-                    <h3 class="text-xl font-black text-ink uppercase mb-1">GDSC TechFest 2024</h3>
-                    <p class="font-mono text-[10px] font-bold text-gray-500 mb-3">> APRIL 2024</p>
-                    <p class="text-ink font-mono text-sm mb-4 flex-1">
-                        Co-hosted the Cybersecurity room with The Hacker's Meetup Mumbai Chapter, impacting 100+ students with sessions on SOC, Offensive Security, Blockchain Security, and Critical Infrastructure.
-                    </p>
-                    <div class="flex flex-wrap gap-2 font-mono text-xs font-bold uppercase">
-                        <span class="px-2 py-1 bg-white border-2 border-ink">100+ Students</span>
-                        <span class="px-2 py-1 bg-white border-2 border-ink">4 Sessions</span>
-                    </div>
+            <div id="community-events" class="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
+                <!-- Latest chapter events loaded via JS from /mumbai-chapter/events.json -->
+                <div class="card flex flex-col p-4 bg-canvas animate-pulse">
+                    <div class="aspect-square bg-gray-200 mb-4"></div>
+                    <div class="h-5 bg-gray-200 rounded mb-2 w-5/6"></div>
+                    <div class="h-3 bg-gray-200 rounded w-1/2"></div>
                 </div>
-                <div class="card flex flex-col p-4 bg-canvas">
-                    <div class="border-2 border-ink mb-4 overflow-hidden shadow-[4px_4px_0_0_#0b0b0b]">
-                        <img src="images/gallery-images/3.png" alt="Aurum Fest Cybersecurity" class="w-full h-48 object-cover filter grayscale hover:grayscale-0 transition-all duration-300">
-                    </div>
-                    <h3 class="text-xl font-black text-ink uppercase mb-1">Aurum Fest Security</h3>
-                    <p class="font-mono text-[10px] font-bold text-gray-500 mb-3">> MARCH 2024</p>
-                    <p class="text-ink font-mono text-sm mb-4 flex-1">
-                        Provided guidance for CTF design and development, with speaker support for Understanding SOC and CTF Introductory sessions, impacting 50+ students.
-                    </p>
-                    <div class="flex flex-wrap gap-2 font-mono text-xs font-bold uppercase">
-                        <span class="px-2 py-1 bg-white border-2 border-ink">50+ Students</span>
-                        <span class="px-2 py-1 bg-white border-2 border-ink">CTF Design</span>
-                    </div>
+                <div class="card flex flex-col p-4 bg-canvas animate-pulse">
+                    <div class="aspect-square bg-gray-200 mb-4"></div>
+                    <div class="h-5 bg-gray-200 rounded mb-2 w-5/6"></div>
+                    <div class="h-3 bg-gray-200 rounded w-1/2"></div>
                 </div>
-                <div class="card flex flex-col p-4 bg-canvas">
-                    <div class="border-2 border-ink mb-4 overflow-hidden shadow-[4px_4px_0_0_#0b0b0b]">
-                        <img src="images/gallery-images/2.png" alt="GDG DevFest" class="w-full h-48 object-cover filter grayscale hover:grayscale-0 transition-all duration-300">
-                    </div>
-                    <h3 class="text-xl font-black text-ink uppercase mb-1">GDG DevFest Mumbai</h3>
-                    <p class="font-mono text-[10px] font-bold text-gray-500 mb-3">> DECEMBER 2023</p>
-                    <p class="text-ink font-mono text-sm mb-4 flex-1">
-                        Developed CTF challenges for DevFest Mumbai participants under The Hackers Meetup Mumbai Chapter banner, with all challenges later uploaded to our open-source repository.
-                    </p>
-                    <div class="flex flex-wrap gap-2 font-mono text-xs font-bold uppercase">
-                        <span class="px-2 py-1 bg-white border-2 border-ink">DevFest</span>
-                        <span class="px-2 py-1 bg-white border-2 border-ink">Open Source</span>
-                    </div>
+                <div class="card flex flex-col p-4 bg-canvas animate-pulse">
+                    <div class="aspect-square bg-gray-200 mb-4"></div>
+                    <div class="h-5 bg-gray-200 rounded mb-2 w-5/6"></div>
+                    <div class="h-3 bg-gray-200 rounded w-1/2"></div>
+                </div>
+                <div class="card flex flex-col p-4 bg-canvas animate-pulse">
+                    <div class="aspect-square bg-gray-200 mb-4"></div>
+                    <div class="h-5 bg-gray-200 rounded mb-2 w-5/6"></div>
+                    <div class="h-3 bg-gray-200 rounded w-1/2"></div>
                 </div>
             </div>
             
@@ -731,6 +710,52 @@
                     <div class="col-span-3 card text-center py-12">
                         <p class="text-ink font-mono mb-4">Unable to load latest posts</p>
                         <a href="/blog/" class="btn-primary inline-block">Visit Blog</a>
+                    </div>
+                `;
+            }
+        });
+
+        // 4. Fetch latest Mumbai chapter events from /mumbai-chapter/events.json
+        document.addEventListener('DOMContentLoaded', async () => {
+            const container = document.getElementById('community-events');
+            if (!container) return;
+
+            try {
+                let res = await fetch('/mumbai-chapter/events.json');
+                if (!res.ok) res = await fetch('mumbai-chapter/events.json');
+                if (!res.ok) throw new Error('Events file not found');
+                const events = await res.json();
+
+                const latest = [...events]
+                    .sort((a, b) => new Date(b.raw_date || b.date) - new Date(a.raw_date || a.date))
+                    .slice(0, 4);
+
+                container.innerHTML = latest.map(event => {
+                    const image = event.image
+                        ? `<img src="${event.image}" alt="${event.title}" class="w-full aspect-square object-cover filter grayscale hover:grayscale-0 transition-all duration-300" loading="lazy">`
+                        : `<div class="w-full aspect-square flex items-center justify-center bg-cyan text-ink font-black">EVENT</div>`;
+                    const link = event.blog || event.luma_url || 'https://haxnation.org/mumbai-chapter';
+
+                    return `
+                        <article class="card flex flex-col p-4 bg-canvas">
+                            <div class="border-2 border-ink mb-4 overflow-hidden shadow-[4px_4px_0_0_#0b0b0b]">
+                                ${image}
+                            </div>
+                            <h3 class="text-xs sm:text-sm font-black text-ink uppercase mb-1 leading-tight">
+                                <a href="${link}" target="_blank" rel="noopener noreferrer" class="hover:text-cyan transition-colors">${event.title}</a>
+                            </h3>
+                            <p class="font-mono text-[10px] font-bold text-gray-500 mb-1">> ${event.date || ''}</p>
+                            <p class="font-mono text-[10px] text-gray-500 mb-4">${event.location || ''}</p>
+                            <a href="${link}" target="_blank" rel="noopener noreferrer" class="btn-secondary text-center mt-auto block text-xs">View Event</a>
+                        </article>
+                    `;
+                }).join('');
+            } catch (e) {
+                console.warn('Chapter events load failed:', e);
+                container.innerHTML = `
+                    <div class="col-span-2 md:col-span-4 card text-center py-12">
+                        <p class="text-ink font-mono mb-4">Unable to load latest events</p>
+                        <a href="/mumbai-chapter" class="btn-primary inline-block">View All Events</a>
                     </div>
                 `;
             }
